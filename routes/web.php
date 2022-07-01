@@ -26,9 +26,7 @@ use App\Http\Controllers\DetailMenuController;
 */
 
 Route::get('/', function () {
-    $dataAboutUs = AboutUs::all();
-    $dataProduk = Barang::all();
-    return view('user.home', compact('dataAboutUs','dataProduk'));
+    return view('user.home');
 });
 
 Auth::routes();
