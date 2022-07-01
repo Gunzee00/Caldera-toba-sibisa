@@ -22,8 +22,8 @@
     </div>
     <ul class="navbar-nav navbar-right">
       @php 
-        $stocks = \DB::select("SELECT * from barangs where stok = 0");  
-        $orders = \DB::select("SELECT * from pesanans where status = 2");
+        $stocks = \DB::select("SELECT * from barangs where stok = '0'");  
+        $orders = \DB::select("SELECT * from pesanans where status = '2'");
       @endphp
       <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
         class="nav-link nav-link-lg message-toggle"><i data-feather="bell"></i>
