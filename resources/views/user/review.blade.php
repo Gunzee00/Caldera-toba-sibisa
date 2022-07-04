@@ -6,7 +6,14 @@
     <div class="container">
             @foreach ($reviewer as $item)
                 <div style="border:1px solid rgb(35, 48, 224); margin:10px 0;" >
-                    <p  class="text-muted" style="padding: 5px 0 0 5px"><img src="avatar/{{ $item->users->avatar }}" style="border-radius: 50%;display:inline-block;" width="50px;" height="50px;" alt=""> {{ $item->users->name }}</p>
+                    <p  class="text-muted" style="padding: 5px 0 0 5px">
+                        @if(!empty($item->users->avatar))
+                        <img src="avatar/{{ $item->users->avatar }}" style="border-radius: 50%;display:inline-block;" width="50px;" height="50px;" alt=""> 
+                        @else
+                        <img src="avatar/user.png" style="border-radius: 50%;display:inline-block;" width="50px;" height="50px;" alt=""> 
+                        @endif
+                        {{ $item->users->name }}
+                    </p>
                     <p class="text-muted">{{ $item->updated_at }} | Variasi : {{ $item->barangs->nama_barang }}</p>
                     <div style="padding: 0 20px;" style="display:inline-block;">
                         @if($item->img2 != null)

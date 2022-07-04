@@ -6,6 +6,7 @@ use App\Models\Pesanan;
 use Illuminate\Http\Request;
 use App\Models\PesananDetail;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class ReviewController extends Controller
 {
@@ -47,7 +48,7 @@ class ReviewController extends Controller
 
     public function storeReviewProcess(Request $request, $id) {
         $request->validate([
-            'img2' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'img2' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
             'video' => 'nullable|mimes:mp4,ogx,oga,ogv,ogg,webm',
             'review' => 'required|String|min:3'
         ]);
@@ -65,5 +66,26 @@ class ReviewController extends Controller
         $reviewers->status = 6;
         $reviewers->save();
         return redirect()->route('review')->with('toast_success', 'Your review has been saved');
+    }
+
+    public function reviewAdmin() {
+        $adminReview = Pesanan::paginate(10);
+        return view('admin.review', [
+            "title" => 'Review'
+        ], compact('adminReview'));
+    }
+
+    public function delete($id) {
+        $deleteReview = Pesanan::where('id', $id)
+        ->orWhere('review')
+        ->orWhere('img2')
+        ->orWhere('video')
+        ->first();
+        $destination = 'productimage/'.$deleteReview->img2;
+        if(File::exists($destination)) {
+            File::delete($destination);
+        }
+        $deleteReview->update(['review' => '', 'img2' => null, 'video']);
+        return back();
     }
 }

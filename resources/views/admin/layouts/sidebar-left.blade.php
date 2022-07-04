@@ -37,6 +37,12 @@
                     <span>Agen &Pelayan</span>
                 </a>
             </li>
+            <li class="dropdown {{ ($title === "Review") ? 'active' : '' }}">
+                <a href="{{ url('/reviews-admin') }}" class="nav-link">
+                    <i class="fas fa-comments"></i>
+                    <span>Review</span>
+                </a>
+            </li>
             <li class="dropdown {{ ($title === "Gallery" || $title === "Tambah Gallery" || $title === "Update Gallery") ? 'active' : '' }}">
                 <a href="{{ url('/gallerys') }}" class="nav-link">
                     <i class="fas fa-image"></i>

@@ -174,3 +174,6 @@ Route::get('/tracking', [PesanController::class, 'tracking'])->name('order.track
 Route::get('/form-tracking/{id}', [PesanController::class, 'formTracking']);
 Route::post('/form-tracking-process/{id}', [PesanController::class, 'formTrackingProcess']);
 
+Route::get('/reviews-admin/', [ReviewController::class, 'reviewAdmin'])->name('reviews.admin');
+Route::patch('/delete-review-admin/{id}', [ReviewController::class, 'delete'])->name('delete');
+
