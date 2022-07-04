@@ -34,7 +34,7 @@
                                         <td class="text-center"><img src="productimage/{{ $data->gambar }}" style="height: 100px; width:100px; align-item:center;" alt="produk"></td>
                                         <td class="text-center">
                                             <a href="{{ url('/edit-menu/'.$data->id) }}"><button type="button" class="btn btn-warning btn-icon-text"><i class="ti-reload btn-icon-prepend"></i>Edit</button></a>
-                                            <a href="{{ url('/delete/'.$data->id) }}"><button type="button" class="btn btn-danger btn-icon-text" data-id={{ $data->id }} data-name={{ $data->nama_barang }}><i class="mdi mdi-delete"></i> Delete</button></a>
+                                            {{-- <a href="{{ url('/delete/'.$data->id) }}"><button type="button" class="btn btn-danger btn-icon-text" data-id={{ $data->id }} data-name={{ $data->nama_barang }}><i class="mdi mdi-delete"></i> Delete</button></a> --}}
                                         </td>
                                     </tr>
                                 @endforeach

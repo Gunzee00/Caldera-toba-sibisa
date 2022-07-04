@@ -117,7 +117,7 @@ Route::get('/edit-menu/{id}', [MenuController::class, 'getUpdate'])->name('edit.
 
 Route::post('/edit-menu-process/{id}', [MenuController::class, 'update'])->name('edit.menu.process');
 
-Route::get('/delete/{id}', [MenuController::class, 'delete'])->name('delete');
+// Route::get('/delete/{id}', [MenuController::class, 'delete'])->name('delete');
 Route::get('/aboutus', [AboutUsController::class, 'index'])->name('aboutus');
 Route::get('/addaboutus', [AboutUsController::class, 'create']);
 Route::post('/add-aboutus-process', [AboutUsController::class, 'store'])->name('add.aboutus.process');
