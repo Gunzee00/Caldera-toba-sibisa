@@ -86,7 +86,7 @@
                             Hasundutan, Sumatera Utara 22457</a>
                         </li>
                         <li class="phone"><a href="https://wa.wizard.id/57ef16" target="_blank">0822-6250-5752</a></li>
-                        <li class="email"><a href="mailto:info@yoursite.com">bandrekandaliman@gmail.com</a>
+                        <li class="email"><a href="mailto:bandrekandaliman@gmail.com">bandrekandaliman@gmail.com</a>
                         </li>
                     </ul>
                 </div>

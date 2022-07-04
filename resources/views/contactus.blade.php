@@ -54,7 +54,7 @@
                                 <h6 class="my-0">WhatsApp</h6>
                                 <small class="text-muted">0822-6250-5752</small>
                             </div>
-                            <a href="" target="_blank"><button type="button"
+                            <a href="https://wa.wizard.id/57ef16" target="_blank"><button type="button"
                                     class="btn btn-primary btn-lg btn-floating" style="background-color: #25d366;">
                                     <i class="fab fa-whatsapp"></i>
                                 </button></a>
