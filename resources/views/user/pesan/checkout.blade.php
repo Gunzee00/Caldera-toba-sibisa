@@ -73,6 +73,23 @@
                             </td>
                             @endif
                         </table>
+                        @else
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <tr>
+                                    <th>No</th>
+                                    <th>Gambar</th>
+                                    <th>Nama Barang</th>
+                                    <th>Jumlah</th>
+                                    <th>Harga</th>
+                                    <th>Alamat</th>
+                                    <th>Total Harga</th>
+                                    <th>Action</th>
+                                </tr>
+                                <tr>
+                                    <td colspan="8" class="text-center">No items available</td>
+                                </tr>
+                            </table>
                         @endif
                     </div>
                 </div>

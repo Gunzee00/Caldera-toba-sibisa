@@ -76,7 +76,7 @@ Route::get('/history/{id}', [HistoryController::class, 'historyDetail'])->name('
 // Route::get('/aboutususer', [AboutUsController::class, 'slideSatu']);
 Route::get('/review', [ReviewController::class, 'index'])->name('review');
 Route::get('/berikan-ulasan/{id}', [ReviewController::class, 'store']);
-Route::post('/berikan-ulasan-process/{id}', [ReviewController::class, 'storeReviewProcess']);
+Route::post('/berikan-ulasan-process/{id}', [ReviewController::class, 'mendapatkan']);
 // Route::post('/berikan-ulasan-process/{id}', [ReviewController::class, 'storeProcess']);
 
 Route::get('/image', [GalleryController::class, 'userGallery'])->name('user.gallery');
@@ -175,5 +175,5 @@ Route::get('/form-tracking/{id}', [PesanController::class, 'formTracking']);
 Route::post('/form-tracking-process/{id}', [PesanController::class, 'formTrackingProcess']);
 
 Route::get('/reviews-admin/', [ReviewController::class, 'reviewAdmin'])->name('reviews.admin');
-Route::patch('/delete-review-admin/{id}', [ReviewController::class, 'delete'])->name('delete');
+Route::delete('/delete-review-admin/{id}', [ReviewController::class, 'deleteReviewAdmin'])->name('delete');
 

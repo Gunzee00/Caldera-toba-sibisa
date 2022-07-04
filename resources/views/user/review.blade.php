@@ -12,7 +12,7 @@
                         @else
                         <img src="avatar/user.png" style="border-radius: 50%;display:inline-block;" width="50px;" height="50px;" alt=""> 
                         @endif
-                        {{ $item->users->name }}
+                        {{ $item->pelanggan->name }} <br>
                     </p>
                     <p class="text-muted">{{ $item->updated_at }} | Variasi : {{ $item->barangs->nama_barang }}</p>
                     <div style="padding: 0 20px;" style="display:inline-block;">

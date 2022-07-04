@@ -16,6 +16,7 @@
                   <form action="{{ url('/berikan-ulasan-process/'.$feedback->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <!-- Email input -->
+                    <input type="text" name="barang_id" value="{{ $feedback->barang_id }}" hidden>
                     <div class="row">
                       <div class="col-6" style="position:relative">
                         <label for="firstimg"><i class="fa-solid fa-camera text-center text-primary" style="font-size: 24px; border:1px solid rgb(30, 27, 238); padding:10px 65px 40px 65px; cursor: pointer; "><p style="color: blue; position:absolute; bottom:-10px; left:20%; font-size:12px; font-family:'Times New Roman', Times, serif">Tambah Foto</p></i></label>

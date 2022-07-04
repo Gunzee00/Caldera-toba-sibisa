@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Barang;
+use App\Models\Review;
 use App\Models\Pesanan;
 use Illuminate\Http\Request;
 use App\Models\PesananDetail;
@@ -11,7 +14,7 @@ use Illuminate\Support\Facades\File;
 class ReviewController extends Controller
 {
     public function index() {
-        $reviewer = Pesanan::where('status', 6)->get();
+        $reviewer = Review::all();
         return view('user.review', [
             "title" => 'Review'
         ], compact('reviewer'));
@@ -24,68 +27,43 @@ class ReviewController extends Controller
         ], compact('feedback'));
     }
 
-    // public function storeProcess(Request $request, $id) {
-    //     $request->validate([
-    //         'review' => 'required',
-    //         'img2' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-    //         'video' => 'nullable|mimes:mp4,ogx,oga,ogv,ogg,webm'
-    //     ]);
-
-    //     $reviewForm = Pesanan::where('id', $id)->first();
-    //     if($request->hasFile('img2')) {
-    //         $request->file('img2')->move('productimage/', $request->file('img2')->getClientOriginalName());
-    //         $reviewForm->img2 = $request->file('img2')->getClientOriginalName();
-    //     }
-    //     $file = $request->file('video');
-    //     $file->move('upload',$file->getClientOriginalName());
-    //     $file_name=$file->getClientOriginalName();
-    //     $reviewForm->video = $file_name;
-    //     $reviewForm->review = $request->review;
-    //     $reviewForm->status = 6;
-    //     $reviewForm->update();
-    //     return redirect()->route('history.detail')->with('toast_success', 'Ulasan anda telah tersimpan!');
-    // }
-
-    public function storeReviewProcess(Request $request, $id) {
-        $request->validate([
-            'img2' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
-            'video' => 'nullable|mimes:mp4,ogx,oga,ogv,ogg,webm',
-            'review' => 'required|String|min:3'
-        ]);
-
-        $reviewers = Pesanan::where('id', $id)->first();
-        if($request->hasFile('img2')) {
-            $request->file('img2')->move('productimage/', $request->file('img2')->getClientOriginalName());
-            $reviewers->img2 = $request->file('img2')->getClientOriginalName();
-        }
-        if($request->hasFile('video')) {
-            $request->file('video')->move('upload/', $request->file('video')->getClientOriginalName());
-            $reviewers->video = $request->file('video')->getClientOriginalName();
-        }
-        $reviewers->review = $request->review;
-        $reviewers->status = 6;
-        $reviewers->save();
-        return redirect()->route('review')->with('toast_success', 'Your review has been saved');
-    }
-
     public function reviewAdmin() {
-        $adminReview = Pesanan::paginate(10);
+        $adminReview = Review::paginate(10);
         return view('admin.review', [
             "title" => 'Review'
         ], compact('adminReview'));
     }
 
-    public function delete($id) {
-        $deleteReview = Pesanan::where('id', $id)
-        ->orWhere('review')
-        ->orWhere('img2')
-        ->orWhere('video')
-        ->first();
-        $destination = 'productimage/'.$deleteReview->img2;
-        if(File::exists($destination)) {
-            File::delete($destination);
+    public function deleteReviewAdmin($id) {
+        $deleted = Review::find($id);
+        $deleted->delete();
+        return back()->with('toast_success', 'Review has beed deleted');
+    }
+
+    public function mendapatkan(Request $request, $id) {
+        $request->validate([
+                    'img2' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
+                    'video' => 'nullable|mimes:mp4,ogx,oga,ogv,ogg,webm',
+                    'review' => 'required|String|min:3'
+                ]);
+        $pesanan = Pesanan::find($id);
+        $barang = Barang::find($id);
+        $review = new Review();
+        $review->pesanan_id = $pesanan->id;
+        $review->user_id = Auth::user()->id;
+        $review->barang_id = $request->barang_id;
+        $review->review = $request->review;
+        if($request->hasFile('img2')) {
+            $request->file('img2')->move('productimage/', $request->file('img2')->getClientOriginalName());
+            $review->img2 = $request->file('img2')->getClientOriginalName();
         }
-        $deleteReview->update(['review' => '', 'img2' => null, 'video']);
-        return back();
+        if($request->hasFile('video')) {
+            $request->file('video')->move('upload/', $request->file('video')->getClientOriginalName());
+            $review->video = $request->file('video')->getClientOriginalName();
+        }
+        $pesanan->status = 6;
+        $pesanan->update();
+        $review->save();
+        return redirect()->route('review')->with('toast_success', 'Your review has been saved');
     }
 }

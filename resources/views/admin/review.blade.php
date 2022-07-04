@@ -19,15 +19,20 @@
                                 <th>Action</th>
                             </tr>
                         </thead>
+                        @if(empty($adminReview->all()))
+                            <tr>
+                                <td colspan="6" class="text-center"><p>Nothing data</p></td>
+                            </tr>
+                        @else
                         <tbody>
                             @php $no=1; @endphp
                             @foreach ($adminReview as $index => $data)
                             <form action="{{ url('/delete-review-admin/'.$data->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                @method('PATCH')
+                                @method('delete')
                                 <tr>
                                     <td>{{ $index + $adminReview->firstItem() }}</td>
-                                    <td>{{ $data->users->name }}</td>
+                                    <td>{{ $data->pelanggan->name }}</td>
                                     <td><img src="productimage/{{ $data->img2 }}" height="100px" width="100px" alt=""></td>
                                     <td>
                                         <a href="upload/{{ $data->video }}" data-sub-html="Demo Description">
@@ -42,6 +47,7 @@
                             </form>
                             @endforeach
                         </tbody>
+                        @endif
                     </table>
                     {{ $adminReview->links() }}
                 </div>
