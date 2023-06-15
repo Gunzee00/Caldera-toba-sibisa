@@ -3,8 +3,8 @@
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Tabel User Activated</h4>
-            <p class="card-description">Table Penngguna Deba Store</p>
+            <h4 class="card-title">Tabel Management User</h4>
+            <p class="card-description">Akun User Caldera Toba Sibisa</p>
             <a href="{{ route('trash.user') }}" style="float: right"><button type="button" class="btn btn-danger btn-icon-tex" ><i class="ti-alert btn-icon-prepend"></i>Trashed</button></a>
             <div class="table-responsive">
                 <table class="table table-striped">
@@ -24,7 +24,9 @@
                             <td class=""><h6>{{ $data->name }}</h6></td>
                             <td class=""><h6>{{ $data->email }}</h6></td>
                             <td class="">
-                                <a href="{{ url('/delete-role/'.$data->id) }}"><button type="button" class="btn btn-success btn-icon-text"><i class="mdi mdi-delete"></i>Acitve</button></a>
+                                <a href="{{ url('/delete-role/'.$data->id) }}">
+                                    <button type="button" class="btn btn-success btn-icon-text" onclick="return confirmToggle('{{ $data->id }}')">Non-Aktifkan Akunc</button>
+                                  </a>
                             </td>
                         </tr>  
                         @endif
@@ -36,4 +38,11 @@
         </div>
     </div>
 </div>
+<script>
+    function confirmToggle(id) {
+      var confirmation = confirm("Apakah Anda yakin ingin mengubah status aktif untuk akun ini?");
+    
+      return confirmation;
+    }
+    </script>
 @endsection

@@ -58,12 +58,12 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Gambar</th>
-                                    <th>Nama Barang</th>
+                                    <th>Jenis Tiket</th>
                                     <th>Jumlah</th>
                                     <th>Harga</th>
                                     <th>Alamat</th>
                                     <th style="width: 120px">Total Harga</th>
-                                    <th>Action</th>
+                                    {{-- <th>Action</th> --}}
                                 </tr>
                                 <?php
                                 $no = 1;
@@ -72,13 +72,13 @@
                                     <tr>
                                         <td>{{ $no++ }}</td>
                                         <td>
-                                            <img src="{{ url('productimage') }}/{{ $pesanan_detail->barang->gambar }}"
+                                            <img src="{{ url('productimage') }}/{{ $pesanan_detail->tiket->gambar }}"
                                                 style="width: 100px; height:100px;" class="card-img-top" alt="product image" />
                                         </td>
-                                        <td>{{ $pesanan_detail->barang->nama_barang }}</td>
+                                        <td>{{ $pesanan_detail->tiket->jenis_tiket }}</td>
                                         <td>{{ $pesanan_detail->jumlah }} buah</td>
-                                        <td>Rp. {{ number_format($pesanan_detail->barang->harga) }}</td>
-                                        <td>{{ $pesanan_detail->pesanan->address }}</td>
+                                        <td>Rp. {{ number_format($pesanan_detail->tiket->harga) }}</td>
+                                        <td>{{ $pesanan_detail->pesanan->tanggal_tiket }}</td>
                                         <td>Rp. {{ number_format($pesanan_detail->jumlah_harga) }}</td>
                                     </tr>
                                 @endforeach

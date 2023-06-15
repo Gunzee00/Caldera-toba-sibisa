@@ -6,20 +6,20 @@
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Update Menu</h4>
+                        <h4 class="card-title">Edit Tiket </h4>
                         <form action="{{ url('/edit-menu-process/'.$dataMenuUpdate->id) }}" method="POST" enctype="multipart/form-data"
                             class="forms-sample">
                             @csrf
                             <div class="form-group">
-                                <input type="text" name="nama_barang" class="form-control" placeholder="Nama Produk" value="{{ $dataMenuUpdate->nama_barang }}">
-                                @error('nama_barang')
+                                <input type="text" name="jenis_tiket" class="form-control" placeholder="Nama Tiket" value="{{ $dataMenuUpdate->jenis_tiket }}">
+                                @error('jenis_tiket')
                                     <div class="text-danger">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <input type="number" name="harga" class="form-control" placeholder="Harga Produk" value="{{ $dataMenuUpdate->harga }}">
+                                <input type="number" name="harga" class="form-control" placeholder="Harga Tiket" value="{{ $dataMenuUpdate->harga }}">
                                 @error('harga')
                                     <div class="text-danger">
                                         {{ $message }}

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Agen;
 use App\Models\User;
 use App\Models\Barang;
@@ -26,15 +27,17 @@ class HomeController extends Controller
 
     public function index()
     {
-        $usertype=Auth::user()->usertype;
-        if($usertype == '1')
-        {
+        // $dataCustomers = User::all()->where('usertype', 0);
+        $usertype = Auth::user()->usertype;
+        if ($usertype == '1') {
             return view('admin.home', [
                 "title" => "Dashboard"
             ]);
-        }
-        else
-        {
+        } elseif ($usertype == '2') {
+            return view('admin.home', [
+                "title" => "Dashboard"
+            ]);
+        } else {
             return view('user.home');
         }
     }
@@ -48,40 +51,44 @@ class HomeController extends Controller
     public function getUpdatedAtAttribute()
     {
         return \Carbon\Carbon::parse($this->attributes['updated_at'])
-           ->diffForHumans();
+            ->diffForHumans();
     }
 
 
-    public function userManagement(Request $request) {
-        if($request->has('search')) {
-            $dataUser = User::where('name', 'LIKE', '%'.$request->search.'%')
-            ->orWhere('email', 'LIKE', '%'.$request->search.'%')
-            ->paginate(10);
-        }else {
+    public function userManagement(Request $request)
+    {
+        if ($request->has('search')) {
+            $dataUser = User::where('name', 'LIKE', '%' . $request->search . '%')
+                ->orWhere('email', 'LIKE', '%' . $request->search . '%')
+                ->paginate(10);
+        } else {
             $dataUser = User::orderBy('created_at', 'desc')
-            ->where('usertype', 1)
-            ->orWhere('usertype', 0)
-            ->paginate(10);
+                ->where('usertype', 1)
+                ->orWhere('usertype', 0)
+                ->paginate(10);
         }
         return view('admin.user-management', [
             "title" => 'User Management | User'
         ], compact('dataUser'));
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         $roleUser = User::find($id);
         $roleUser->delete();
         return redirect()->route('user.role')->with('success', 'Data berhasil dinonaktifkan');
     }
 
-    public function trash() {
+    public function trash()
+    {
         $trashesUser = User::onlyTrashed()->paginate(10);
         return view('admin.restore-user', [
             "title" => 'Restore User'
         ], compact('trashesUser'));
     }
 
-    public function restore($id) {
+    public function restore($id)
+    {
         $restoreUser = User::onlyTrashed()->where('id', $id);
         $restoreUser->restore();
         return redirect()->back()->with('toast_success', 'Data berhasil di Aktifkan kembali');
@@ -130,11 +137,11 @@ class HomeController extends Controller
     {
         $request->validate([
             'name' => 'required|String|min:3|max:50',
-            'speciality'=> 'required',
-            'facebook'=> 'required',
-            'instagram'=> 'required',
-            'twitter'=> 'required|numeric',
-            'image'=> 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'speciality' => 'required',
+            'facebook' => 'required',
+            'instagram' => 'required',
+            'twitter' => 'required|numeric',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
 
@@ -147,7 +154,7 @@ class HomeController extends Controller
             'image' => $request->image,
         ]);
 
-        if($request->hasFile('image')) {
+        if ($request->hasFile('image')) {
             $request->file('image')->move('agenimage/', $request->file('image')->getClientOriginalName());
             $dataAgen->image = $request->file('image')->getClientOriginalName();
             $dataAgen->save();
@@ -163,7 +170,6 @@ class HomeController extends Controller
         return view('admin.agen.updateagen', [
             "title" => 'Update Agen & Pelayan'
         ], compact('data'));
-
     }
 
 
@@ -174,29 +180,28 @@ class HomeController extends Controller
 
         $image = $request->image;
 
-        if($image){
+        if ($image) {
 
-            $imagename = time().'.'.$image->getClientOriginalExtension();
+            $imagename = time() . '.' . $image->getClientOriginalExtension();
 
             $request->image->move('agenimage', $imagename);
 
-            $data->image=$imagename;
+            $data->image = $imagename;
         }
 
-            $data->name=$request->name;
+        $data->name = $request->name;
 
-            $data->speciality=$request->speciality;
+        $data->speciality = $request->speciality;
 
-            $data->facebook=$request->facebook;
+        $data->facebook = $request->facebook;
 
-            $data->instagram=$request->instagram;
+        $data->instagram = $request->instagram;
 
-            $data->twitter=$request->twitter;
+        $data->twitter = $request->twitter;
 
-            $data->save();
+        $data->save();
 
-            return redirect('viewagen')->with('success', 'Profil Berhasil di update');
-
+        return redirect('viewagen')->with('success', 'Profil Berhasil di update');
     }
 
     public function addagen()
@@ -206,15 +211,15 @@ class HomeController extends Controller
         ]);
     }
 
-        // Class deleteagen
-        public function deleteagen($id)
-        {
-            $data = agen::find($id);
+    // Class deleteagen
+    public function deleteagen($id)
+    {
+        $data = agen::find($id);
 
-            $data->delete();
+        $data->delete();
 
-            return redirect('viewagen')->with('success', 'Berhasil Menghapus Orang');
-        }
+        return redirect('viewagen')->with('success', 'Berhasil Menghapus Orang');
+    }
 
     // Class     contact
     public function contact()
@@ -227,27 +232,27 @@ class HomeController extends Controller
     // class reservation
     public function reservation(Request $request)
     {
-       $request->validate([
-        'name' => 'required',
-        'email' => 'regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix',
-        'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:11',
-        'guest' => 'required',
-        'date' => 'required',
-        'time' => 'required',
-        'message' => 'required',
-       ]);
+        $request->validate([
+            'name' => 'required',
+            'email' => 'regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix',
+            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:11',
+            'guest' => 'required',
+            'date' => 'required',
+            'time' => 'required',
+            'message' => 'required',
+        ]);
 
-       $reservation = new Reservation();
-       $reservation->name = $request->name;
-       $reservation->email = $request->email;
-       $reservation->phone = $request->phone;
-       $reservation->guest = $request->guest;
-       $reservation->date = $request->date;
-       $reservation->time = $request->time;
-       $reservation->message = $request->message;
+        $reservation = new Reservation();
+        $reservation->name = $request->name;
+        $reservation->email = $request->email;
+        $reservation->phone = $request->phone;
+        $reservation->guest = $request->guest;
+        $reservation->date = $request->date;
+        $reservation->time = $request->time;
+        $reservation->message = $request->message;
 
-       $reservation->save();
-       return redirect()->route('reservation')->with('toast_success', 'Your data has been saved');
+        $reservation->save();
+        return redirect()->route('reservation')->with('toast_success', 'Your data has been saved');
     }
 
     // class viewreservation
@@ -260,14 +265,16 @@ class HomeController extends Controller
         ], compact('data'));
     }
 
-    public function upload($id) {
+    public function upload($id)
+    {
         $dataPesan = Pesanan::find($id);
         return view('user.upload', [
             "title" => 'Upload Gambar'
         ], compact('dataPesan'));
     }
 
-    public function uploadProcess(Request $request, $id) {
+    public function uploadProcess(Request $request, $id)
+    {
         // dd($request);
         $request->validate([
             'gambar' => 'required',
@@ -275,21 +282,23 @@ class HomeController extends Controller
 
         $dataPesanan = Pesanan::where('id', $id)->first();
 
-        if($request->hasFile('gambar')) {
+        if ($request->hasFile('gambar')) {
             $request->file('gambar')->move('productimage/', $request->file('gambar')->getClientOriginalName());
             $dataPesanan->gambar = $request->file('gambar')->getClientOriginalName();
             $dataPesanan->status = 2;
             $dataPesanan->update();
         }
-        
+
         return redirect()->route('history.detail')->with('toast_success', 'Gambar sudah berhasil dikirim');
     }
 
-    public function contactus() {
+    public function contactus()
+    {
         return view('user.contact-us');
     }
 
-    public function contactUsProcess(Request $request) {
+    public function contactUsProcess(Request $request)
+    {
         $request->validate([
             'nama' => 'required|min:3',
             'email' => 'required|email',
@@ -306,7 +315,8 @@ class HomeController extends Controller
         return view('user.thank-you');
     }
 
-    public function contactUsAdmin() {
+    public function contactUsAdmin()
+    {
         $dataContact = Contactus::paginate(10);
         return view('admin.contact-us', [
             "title" => 'Contact Us'

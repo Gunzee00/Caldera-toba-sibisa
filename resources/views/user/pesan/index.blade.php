@@ -23,45 +23,51 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
-                                <img src="{{ url('productimage') }}/{{ $barang->gambar }}" width="445px" alt="">
+                                <img src="{{ url('productimage') }}/{{ $tiket->gambar }}" width="445px" alt="">
                             </div>
                             <div class="col-md-6 mt-4">
-                                <h3>{{ $barang->nama_barang }}</h3>
+                                <h3>{{ $tiket->jenis_tiket }}</h3>
                                 <table class="table table-borderless">
-                                    <form action="{{ url('/pesan-process/'.$barang->id) }}" method="POST">
-                                    <tr>
-                                        <td>Harga</td>
-                                        <td>:</td>
-                                        <td>Rp. {{ number_format($barang->harga) }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Stok</td>
-                                        <td>:</td>
-                                        <td>{{ $barang->stok }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Keterangan</td>
-                                        <td>:</td>
-                                        <td>{{ $barang->keterangan }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Alamat Pengirim</td>
-                                        <td>:</td>
-                                        <td>
-                                            <textarea name="address" id="" cols="40" rows="7" style="resize: none" required value={{ old('address') }}></textarea>    
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Jumlah Pesan</td>
-                                        <td>:</td>
-                                        <td>
+                                    <form action="{{ url('/pesan-process/' . $tiket->id) }}" method="POST">
+                                        <tr>
+                                            <input type="text" hidden name="jenis_tiket"
+                                                value="{{ $tiket->jenis_tiket }}">
+                                            <input  type="file" hidden name="gambar"
+                                                value="{{ url('productimage') }}/{{ $tiket->gambar }}" id="">
+                                            <td>Harga</td>
+                                            <td>:</td>
+                                            <td>Rp. {{ number_format($tiket->harga) }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Stok</td>
+                                            <td>:</td>
+                                            <td>{{ $tiket->stok }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Keterangan</td>
+                                            <td>:</td>
+                                            <td>{{ $tiket->keterangan }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tanggal Pemesanan Tiket</td>
+                                            <td>:</td>
+                                            <td>
+                                                <input type="date" name="tanggal_tiket" id="" class="form-control" required
+                                                    value="{{ old('tanggal_tiket') }}" min="{{ date('Y-m-d') }}"></input>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jumlah Pesan</td>
+                                            <td>:</td>
+                                            <td>
                                                 @csrf
-                                                <input type="number" name="jumlah_pesan" class="form-control" required min="1" value="{{ old('jumlah_pesan') }}">
+                                                <input type="number" name="jumlah_pesan" class="form-control" required
+                                                    min="1" value="{{ old('jumlah_pesan') }}">
                                                 <button type="submit" class="btn btn-primary mt-2"><i
                                                         class="fas fa-shopping-cart"></i> add cart</button>
-                                            
-                                        </td>
-                                    </tr>
+
+                                            </td>
+                                        </tr>
                                     </form>
                                 </table>
                             </div>
@@ -70,5 +76,6 @@
                 </div>
             </div>
         </div>
+
     </div>
 @endsection

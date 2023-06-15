@@ -11,25 +11,28 @@ class Pesanan extends Model
     protected $table = 'pesanans';
 
     protected $fillable = [
-        'gambars',
         'review',
+        'status',
     ];
 
     public function user()
     {
-        return $this->belongTo('App\User', 'user_id', 'id');
-    }
-
-    public function users() {
-        return $this->hasOne(User::class, 'id', 'user_id');
+        return $this->belongsTo('App\Models\User', 'user_id', 'id');
     }
 
     public function pesanan_detail()
     {
-        return $this->hasMany(PesananDetail::class,'pesanan_id', 'id');
+        return $this->hasMany(PesananDetail::class, 'pesanan_id', 'id');
     }
 
-    public function barangs() {
-        return $this->hasOne(Barang::class, 'id', 'barang_id');
+    public function barangs()
+    {
+        return $this->hasOne(Tiket::class, 'id', 'tiket_id');
+    }
+
+    public function photos()
+    {
+        return $this->hasMany(Photo::class, 'pesanan_id', 'id');
     }
 }
+

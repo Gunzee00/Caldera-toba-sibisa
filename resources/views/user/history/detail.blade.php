@@ -47,7 +47,7 @@
                     <div class="card-header">
                         <h4><i class="fa fa-shopping-cart"></i> Detail Pemesanan</h4>
                         @if (!empty($pesanan))
-                            <p class="text-end">Tanggal Pesan : {{ $pesanan->tanggal }}</p>
+                            <p class="text-end">Tanggal Pesan : {{ $pesanan->tanggal_pemesanan }}</p>
                             @if($pesanan->status == 1)
                             <p class="text-end text-danger">*setelah melakukan pembayaran, silahkan upload bukti pembayaran dibawah ini</p>
                             @endif
@@ -59,15 +59,16 @@
                             </div>
                             @endif
                             @if($pesanan->status == 4)
-                            <div class="card text-bold" style=
-                            "box-shadow: inset 3px 3px 4px rgba(0,0,0,0.4);
-                            border: 1px solid grey;">
-                                <h6 class="card-body">Lihat Gambar : 
-                                    <a href="productimage/{{ $pesanan->img }}" data-sub-html="Demo Description">
-                                        <img class="img-responsive thumbnail" src="productimage/{{ $pesanan->img }}"
-                                          alt="{{ $pesanan->img }}">
-                                    </a>
-                                </h6>
+                            <div class="card text-bold" style="box-shadow: inset 3px 3px 4px rgba(0,0,0,0.4); border: 1px solid grey;">
+                                <h6 class="card-body">Lihat Gambar :</h6>
+                                <div class="gallery">
+                                    @foreach ($gambar_tiket as $item)
+                                        <a href="productimage/{{ $item->gambar_tiket }}" data-sub-html="Demo Description">
+                                            <img class="img-responsive thumbnail" src="productimage/{{ $item->gambar_tiket }}" alt="" style="max-width: 200px; max-height: 200px;">
+                                        </a>
+                                    @endforeach
+                                </div>
+                            </div>                            
                             </div>
                             @endif
                             @if($pesanan->status == 5)
@@ -122,7 +123,7 @@
                                         </div>
                                       </div>
                                       @endif
-                                      <a href="productimage/{{ $pesanan->img }}" target="_blank"><p>Lihat barang anda disini</p></a>
+                                      <a href="productimage/{{ $pesanan->img }}" target="_blank"><p>Lihat tiket anda disini</p></a>
                                       <a href="{{ url('/berikan-ulasan/'.$pesanan->id) }}"><button type="button" class="btn btn-primary">Pesanan Diterima</button></a>
                                 </h6>
                             </div>
@@ -134,30 +135,41 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Gambar</th>
-                                    <th>Nama Barang</th>
+                                    <th>Nama Tiket</th>
                                     <th>Jumlah</th>
                                     <th>Harga</th>
-                                    <th>Alamat</th>
+                                    <th>Tanggal Tiket</th>
                                     <th style="width: 120px">Total Harga</th>
-                                    <th>Action</th>
+                                    {{-- <th>Action</th> --}}
                                 </tr>
                                 <?php
                                 $no = 1;
                                 ?>
-                                @foreach ($pesanan_details as $pesanan_detail)
-                                    <tr>
-                                        <td>{{ $no++ }}</td>
-                                        <td>
-                                            <img src="{{ url('productimage') }}/{{ $pesanan_detail->barang->gambar }}"
-                                                style="width: 100px; height:100px;" class="card-img-top" alt="product image" />
-                                        </td>
-                                        <td>{{ $pesanan_detail->barang->nama_barang }}</td>
-                                        <td>{{ $pesanan_detail->jumlah }} buah</td>
-                                        <td>Rp. {{ number_format($pesanan_detail->barang->harga) }}</td>
-                                        <td>{{ $pesanan_detail->pesanan->address }}</td>
-                                        <td>Rp. {{ number_format($pesanan_detail->jumlah_harga) }}</td>
-                                    </tr>
-                                @endforeach
+                                 @foreach ($pesanan_details as $pesanan_detail)
+                                 <tr>
+                                     <td>{{ $no++ }}</td>
+                                     <td>
+                                         <img src="{{ url('productimage') }}/{{ $pesanan_detail->tiket->gambar }}"
+                                             style="width: 100px; height:100px;" class="card-img-top"  alt="product image" />
+                                     </td>
+                                     <td>{{ $pesanan_detail->tiket->jenis_tiket }}</td>
+                                     <td>{{ $pesanan_detail->jumlah }} buah</td>
+                                     <td>Rp. {{ number_format($pesanan_detail->tiket->harga) }}</td>
+                                     <td>{{ $pesanan_detail->pesanan->tanggal_tiket }}</td>
+                                     <td>Rp. {{ number_format($pesanan_detail->jumlah_harga) }}</td>
+                                     {{-- <td>
+                                         <form action="{{ url('check-out') }}/{{ $pesanan_detail->id }}" method="post">
+                                             @csrf
+                                             {{ method_field('DELETE') }}
+                                             <button type="submit" class="btn btn-danger btn-sm"
+                                                 onclick="return confirm('Yakin Ingin Menghapus tiket?');">
+                                                 <i class="fa fa-trash"></i>
+                                             </button>
+                                         </form>
+                                     </td> --}}
+                                 </tr>
+                             @endforeach
+                               
                                 <tr>
                                     <td colspan="6" class="text-end" colspan="5"><strong>Total Pesanan:</strong></td>
                                     <td><strong>Rp. {{ number_format($pesanan->jumlah_harga) }}</strong></td>
@@ -170,9 +182,9 @@
                                     <td colspan="6" class="text-end" colspan="5"><strong>Total Pembayaran :</strong></td>
                                     <td><strong>Rp. {{ number_format($pesanan->jumlah_harga) }}</strong></td>
                                     @if($pesanan->status == 1 )
-                                    <td><strong><a href="{{ url('/upload/'.$pesanan->id) }}"><button class="btn btn-secondary">Upload</button></a></strong></td>
+                                    <td><strong><a href="{{ url('/upload/'.$pesanan->id) }}"><button class="btn btn-secondary">Masukkan Bukti Pembayaran</button></a></strong></td>
                                     @else
-                                    <td><strong><button class="btn btn-warning" disabled><b>Uploaded</b></button></strong></td>
+                                    <td><strong><button class="btn btn-warning" disabled><b>Bukti Telah dikirim </b></button></strong></td>
                                     @endif
                                 </tr>
                             </table>

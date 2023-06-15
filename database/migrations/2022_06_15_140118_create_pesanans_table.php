@@ -16,12 +16,12 @@ return new class extends Migration
         Schema::create('pesanans', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->date('tanggal');
+            $table->date('tanggal_pemesanan');
             $table->string('status');
             $table->integer('kode');
             $table->integer('jumlah_harga');
             $table->string('gambar')->default('');
-            $table->text('address');
+            $table->text('tanggal_tiket');
             $table->integer('barang_id');
             $table->integer('jumlah_pesan');
             $table->string('img')->default('');

@@ -8,6 +8,7 @@ use App\Models\Review;
 use App\Models\Pesanan;
 use Illuminate\Http\Request;
 use App\Models\PesananDetail;
+use App\Models\Tiket;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
@@ -47,11 +48,11 @@ class ReviewController extends Controller
                     'review' => 'required|String|min:3'
                 ]);
         $pesanan = Pesanan::find($id);
-        $barang = Barang::find($id);
+        $tiket = Tiket::find($id);
         $review = new Review();
         $review->pesanan_id = $pesanan->id;
         $review->user_id = Auth::user()->id;
-        $review->barang_id = $request->barang_id;
+        $review->tiket_id = $request->tiket_id;
         $review->review = $request->review;
         if($request->hasFile('img2')) {
             $request->file('img2')->move('productimage/', $request->file('img2')->getClientOriginalName());

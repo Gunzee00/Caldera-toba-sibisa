@@ -1,58 +1,79 @@
 @extends('admin.layouts.master')
 @section('content')
-<div class="row ">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header">
-                <h4>Upload Bukti Foto</h4>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table id="mainTable" class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>Name</th>
-                                <th>Kode</th>
-                                <th>Jumlah Harga</th>
-                                <th>Tanggal</th>
-                                <th>Alamat Penerima</th>
-                                <th>Upload Bukti Barang</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @php $no=1; @endphp
-                            @foreach ($dataConfirmPhoto as $index => $data)
-                            <form action="{{ url('/confirm-photo-process/'.$data->id) }}" method="POST" enctype="multipart/form-data">
-                                @csrf
+    <div class="row ">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Kirim Tiket</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="mainTable" class="table table-striped">
+                            <thead>
                                 <tr>
-                                    <td>{{ $index + $dataConfirmPhoto->firstItem() }}</td>
-                                    <td>{{ $data->users->name }}</td>
-                                    <td>{{ $data->kode }}</td>
-                                    <td>Rp{{ number_format($data->jumlah_harga, 0, ',', '.') }}</td>
-                                    <td>{{ $data->updated_at->isoFormat('dddd, D MMM Y') }}</td>
-                                    <td>{{ $data->address }}</td>
-                                    <td>
-                                        <input type="file" name="img">
-                                        @error('img')
-                                        <div class="text-danger">
-                                            {{ $message }}
-                                        </div>
-                                        @enderror
-                                    </td>
-                                    <td>
-                                        <button type="submit" class="btn btn-primary">Upload</button>
-                                    </td>
+                                    <th>No.</th>
+                                    <th>Nama Pemesan</th>
+                                    <th>Detail</th>
+                                    <th>Kode</th>
+                                    <th>Jumlah Harga</th>
+                                    {{-- <th>Tanggal</th>
+                                    <th>Tanggal Penggunaan Tiket</th> --}}
+                                    <th>Kirim Tiket</th>
+                                    <th>Action</th>
                                 </tr>
-                            </form>
-                            @endforeach
-                        </tbody>
-                    </table>
-                    {{ $dataConfirmPhoto->links() }}
+                            </thead>
+                            <tbody>
+                                @php $no=1; @endphp
+                                @foreach ($dataConfirmPhoto as $index => $data)
+                                    <form action="{{ url('/confirm-photo-process/' . $data->id) }}" method="POST"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        <tr>
+                                            <td>{{ $index + $dataConfirmPhoto->firstItem() }}</td>
+                                            <td>{{ $data->user->name }}</td>
+                                            {{-- <td>{{ $data->jenis_tiket }}</td> --}}
+                                            {{-- <td> 
+                                            {{ $data->barangs->jenis_tiket }}
+                                        </td> --}}
+                                        <td>
+                                            <a href="{{ route('order.detail', ['id' => $data->id]) }}" class="nav-link">
+                                                <i class="fas fa-eye"></i>
+                                                {{-- order-details/24 --}}
+                                            </a>
+                                        </td>
+                                        
+                                            <td>{{ $data->kode }}</td>
+
+                                            <td>Rp{{ number_format($data->jumlah_harga, 0, ',', '.') }}</td>
+                                            {{-- <td>{{ $data->updated_at->isoFormat('dddd, D MMM Y') }}</td>
+                                            <td>{{ $data->tanggal_tiket }}</td> --}}
+                                            <td>
+                                                <input multiple="true" type="file" name="img[]">
+                                                @error('img')
+                                                    <div class="text-danger">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </td>
+                                            <td>
+                                                <button type="submit" multiple="true" class="btn btn-primary" onclick="return confirmUpload()">Upload</button>
+                                              </td>
+                                        </tr>
+                                    </form>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        {{ $dataConfirmPhoto->links() }}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    <script>
+        function confirmUpload() {
+          var confirmation = confirm("Apakah Anda yakin ingin mengunggah file ini?");
+        
+          return confirmation;
+        }
+        </script>
 @endsection

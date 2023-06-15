@@ -30,12 +30,12 @@
                             <tr>
                                 <th>No</th>
                                 <th>Gambar</th>
-                                <th>Nama Barang</th>
+                                <th>Jenis Tiket</th>
                                 <th>Jumlah</th>
                                 <th>Harga</th>
-                                <th>Alamat</th>
+                                <th>Tanggal Tiket</th>
                                 <th>Total Harga</th>
-                                <th>Action</th>
+                                <th>Aksi</th>
                             </tr>
                             <?php
                             $no = 1;
@@ -44,19 +44,20 @@
                                 <tr>
                                     <td>{{ $no++ }}</td>
                                     <td>
-                                        <img src="{{ url('productimage') }}/{{ $pesanan_detail->barang->gambar }}" style="width: 100px; height:100px;" class="card-img-top" alt="product image"/>
+                                        <img src="{{ url('productimage') }}/{{ $pesanan_detail->tiket->gambar }}"
+                                            style="width: 100px; height:100px;" class="card-img-top"  alt="product image" />
                                     </td>
-                                    <td>{{ $pesanan_detail->barang->nama_barang }}</td>
+                                    <td>{{ $pesanan_detail->tiket->jenis_tiket }}</td>
                                     <td>{{ $pesanan_detail->jumlah }} buah</td>
-                                    <td>Rp. {{ number_format($pesanan_detail->barang->harga) }}</td>
-                                    <td>{{ $pesanan_detail->pesanan->address }}</td>
+                                    <td>Rp. {{ number_format($pesanan_detail->tiket->harga) }}</td>
+                                    <td>{{ $pesanan_detail->pesanan->tanggal_tiket }}</td>
                                     <td>Rp. {{ number_format($pesanan_detail->jumlah_harga) }}</td>
                                     <td>
                                         <form action="{{ url('check-out') }}/{{ $pesanan_detail->id }}" method="post">
                                             @csrf
                                             {{ method_field('DELETE') }}
                                             <button type="submit" class="btn btn-danger btn-sm"
-                                                onclick="return confirm('Yakin Ingin Menghapus Produk?');">
+                                                onclick="return confirm('Yakin Ingin Menghapus tiket?');">
                                                 <i class="fa fa-trash"></i>
                                             </button>
                                         </form>
@@ -65,21 +66,21 @@
                             @endforeach
                             <td class="text-end" colspan="6"><strong>Total Harga :</strong></td>
                             <td><strong>Rp. {{ number_format($pesanan->jumlah_harga) }}</strong></td>
-                            @if(count($pesanan_details) > 0 )
-                            <td>
-                                <a href="{{ url('konfirmasi-check-out') }}" class="btn btn-success"
-                                    onclick="return confirm('Yakin Mau CheckOut?');">
-                                    <i class="fa fa-shopping-cart"></i>Check Out</a>
-                            </td>
+                            @if (count($pesanan_details) > 0)
+                                <td>
+                                    <a href="{{ url('konfirmasi-check-out') }}" class="btn btn-success"
+                                        onclick="return confirm('Yakin Mau CheckOut?');">
+                                        <i class="fa fa-shopping-cart"></i>Check Out</a>
+                                </td>
                             @endif
                         </table>
-                        @else
+                    @else
                         <div class="table-responsive">
                             <table class="table table-hover">
                                 <tr>
                                     <th>No</th>
                                     <th>Gambar</th>
-                                    <th>Nama Barang</th>
+                                    <th>Nama tiket</th>
                                     <th>Jumlah</th>
                                     <th>Harga</th>
                                     <th>Alamat</th>
@@ -90,10 +91,10 @@
                                     <td colspan="8" class="text-center">No items available</td>
                                 </tr>
                             </table>
-                        @endif
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-@endsection
+    @endsection

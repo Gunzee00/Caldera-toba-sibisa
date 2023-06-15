@@ -32,7 +32,9 @@
                             @else
                             <td class="text-center">
                                 <a href="{{ url('/edit-admin/'.$data->id) }}"><i class="fas fa-pen" style="font-size: 20px;margin-right:10px;"></i></a>
-                                <a href="{{ url('/delete-role/'.$data->id) }}"><button type="button" class="btn btn-success btn-icon-tex" ><i class="ti-alert btn-icon-prepend"></i>Active</button></a>
+                                <a href="{{ url('/delete-role/'.$data->id) }}">
+                                    <button type="button" class="btn btn-success btn-icon-tex" onclick="return confirmToggle('{{ $data->id }}')">Non-Aktifkan Akun</button>
+                                  </a>
                             </td>
                             @endif
                         </tr>
@@ -45,4 +47,16 @@
         </div>
     </div>
 </div>
+<script>
+function confirmToggle(id) {
+  var confirmation = confirm("Apakah Anda yakin ingin mengubah status aktif untuk akun ini?");
+
+  if (confirmation) {
+    // Submit form untuk mengaktifkan atau menonaktifkan
+    document.getElementById('deleteForm' + id).submit();
+  }
+
+  return false; // Menghentikan tindakan default klik tombol
+}
+</script>
 @endsection

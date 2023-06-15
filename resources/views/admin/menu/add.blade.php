@@ -6,20 +6,20 @@
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Tambahkan Menu Terbaik Dari Deba Store</h4>
+                        <h4 class="card-title">Tambahkan Tiket Masuk</h4>
                         <form action="{{ route('add.menu.process') }}" method="post" enctype="multipart/form-data"
                             class="forms-sample">
                             @csrf
                             <div class="form-group">
-                                <input type="text" name="nama_barang" class="form-control" placeholder="Nama Produk" value="{{ old('nama_barang') }}">
-                                @error('nama_barang')
+                                <input type="text" name="jenis_tiket" class="form-control" placeholder="Nama Tiket" value="{{ old('jenis_tiket') }}">
+                                @error('jenis_tiket')
                                     <div class="text-danger">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <input type="number" name="harga" class="form-control" placeholder="Harga Produk" value="{{ old('harga') }}">
+                                <input type="number" name="harga" class="form-control" placeholder="Harga Tiket" value="{{ old('harga') }}">
                                 @error('harga')
                                     <div class="text-danger">
                                         {{ $message }}
@@ -28,9 +28,9 @@
                             </div>
                             <div class="form-group">
                                 <input type="text" name="keterangan" class="form-control"
-                                    placeholder="Keterangan Produk" >
+                                    placeholder="Keterangan Tiket"  value="{{ old('keterangan') }}" >
                                 @error('keterangan')
-                                    <div class="text-danger" value="{{ old('keterangan') }}">
+                                    <div class="text-danger">
                                         {{ $message }}
                                     </div>
                                 @enderror
@@ -45,7 +45,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label>Gambar Produk</label>
+                                <label>Gambar Tiket</label>
                                 <input type="file" name="gambar" value="{{ old('gambar') }}">
                                 @error('gambar')
                                     <div class="text-danger">
