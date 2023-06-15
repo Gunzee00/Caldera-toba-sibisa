@@ -27,7 +27,7 @@
                 <th scope="col">Nama Pengunjung</th>
                 <th scope="col">Nik</th>
                 <th scope="col">Tempat Tinggal</th>
-                <th scope="col">Aksi</th>
+                <th scope="col" colspan="2"><center>Aksi</center></th>
             </tr>
         </thead>
         @foreach ($datapengunjung as $item)
@@ -37,7 +37,9 @@
                     <td>{{ $item->nik }}</td>
                     <td>{{ $item->tempat_tinggal }}</td>
                     <td>
-                        <a href="/edit-datapengunjung/{{ $item->id_data }}"><button type="button" class="btn col btn-warning">Edit</button></a>     
+                        <a href="/edit-datapengunjung/{{ $item->id_data }}"><button type="button" class="btn col btn-warning">Edit</button></a>
+                        </td>
+                        <td>     
                         <form action="delete-datapengunjung/{{ $item->id_data }}" method="POST" id="deleteForm{{ $item->id_data }}">
                             @csrf
                             @method('delete')

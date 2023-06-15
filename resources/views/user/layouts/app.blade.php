@@ -132,7 +132,7 @@
                                     ->where('status', 5)
                                     ->where('user_id', Auth::user()->id)
                                     ->get();
-                            @endphp ?> ?> ?> ?> ?> ?> ?> ?>
+                            @endphp 
                             <div class="dropdown">
                                 <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#"
                                     id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown"

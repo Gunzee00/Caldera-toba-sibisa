@@ -146,7 +146,7 @@ Route::get('/edit-menu/{id}', [MenuController::class, 'getUpdate'])->name('edit.
 Route::post('/edit-menu-process/{id}', [MenuController::class, 'update'])->name('edit.menu.process');
 
 //Restore for admin Kamar
-Route::get('/show-kamar', [KamarController::class, 'home'])->name('show-kamar');
+Route::get('/show-kamar', [KamarController::class, 'index'])->name('show-kamar');
 Route::get('/add-kamar', [KamarController::class, 'create'])->name('add-kamar');
 Route::post('/store-kamar', [KamarController::class, 'store'])->name('store-kamar');
 Route::delete('delete-kamar/{id_kamar}', [KamarController::class, 'destroy']);
@@ -222,7 +222,7 @@ Route::get('/order-details', [PesanController::class, 'orderDetails'])->name('od
 Route::get('/order-details/{id}', [PesanController::class, 'detail'])->name('order.detail');
 
 Route::get('/confirm-order-process/{id}', [PesanController::class, 'confirmOrdersProcess'])->name('oder.confirm.process');
-Route::get('/reject-order-process/{id}', [PesanController::class, 'rejectOrderProcess'])->name('order.reject');
+Route::get('/reject-order-process/{id}', [PesanController::class, 'rejectOrderProcess'])->name('order.reject.process');
 
 Route::get('/order-finish', [PesanController::class, 'orderResult'])->name('oder.finish');
 Route::get('/order-finish/{id}', [PesanController::class, 'orderResultUpload'])->name('oder.finish.upload');

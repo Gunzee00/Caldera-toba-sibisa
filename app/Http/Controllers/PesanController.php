@@ -196,7 +196,7 @@ class PesanController extends Controller
         $dataRejectProcess->status = 6;
         // return $dataRejectProcess;
         $dataRejectProcess->update();
-        return redirect()->route('order.reject')->with('toast_success', 'Data has been rejected');
+        return redirect()->route('oder.deatail')->with('toast_success', 'Data has been rejected');
     }
     public function orderResult(Request $request)
     {

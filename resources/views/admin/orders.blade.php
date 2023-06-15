@@ -21,7 +21,8 @@
                                     <th>Tanggal Penggunaan Tiket</th>
                                     <th>Detail Pesanan</th>
                                     <th>Bukti Pembayaran</th>
-                                    <th>Aksi</th>
+                                    <th colspan="2"><center>Aksi</center></th>
+                                   
                                 </tr>
                             </thead>
                             <tbody>
