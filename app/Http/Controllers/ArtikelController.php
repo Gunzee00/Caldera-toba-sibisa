@@ -219,6 +219,6 @@ class ArtikelController extends Controller
     {
 
         $delete = DB::table('artikel')->where('id_artikel', $id_artikel)->delete();
-        return redirect('/show-artikel')->with('success', 'Artikel created successfully.');
+        return redirect('/show-artikel')->with('success', 'Artikel berhasil di hapus.');
     }
 }

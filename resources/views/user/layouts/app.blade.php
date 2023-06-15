@@ -132,7 +132,7 @@
                                     ->where('status', 5)
                                     ->where('user_id', Auth::user()->id)
                                     ->get();
-                            @endphp 
+                            @endphp
                             <div class="dropdown">
                                 <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#"
                                     id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown"
@@ -143,7 +143,7 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                                     @foreach ($orders as $item)
-                                           <li>
+                                        <li>
                                             <a class="dropdown-item"
                                                 href="{{ url('pesanan/' . $item->id) }}">{{ 'Tiket anda dengan kode ' . $item->kode . ' sudah di confirm' }}</a>
                                         </li>
@@ -196,18 +196,18 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
                                     <li>
-                                        <a class="dropdown-item" href="{{ url('profile') }}">My profile</a>
+                                        <a class="dropdown-item" href="{{ url('profile') }}">Akun Saya</a>
                                     </li>
-                                    <li>
+                                    {{-- <li>
                                         <a class="dropdown-item" href="{{ url('pesanan') }}">Pesanan</a>
-                                    </li>
+                                    </li> --}}
                                     {{-- <li>
                                         <a class="dropdown-item" href="{{ url('/history') }}">History Pesanan</a>
                                     </li> --}}
                                     <li>
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
+                                            {{ __('Keluar') }}
                                         </a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                             class="d-none">
@@ -241,7 +241,7 @@
                             Pardamean Sibisa, Kec. Ajibata, Toba, Sumatera Utara 22386<br>
 
                         <dl>
-                            <dd>
+                            {{-- <dd>
                                 <a href="https://www.facebook.com/bandrekandaliman"
                                     class="social-media-link p-1 p-md-0 mr-2 text-muted" target="_blank"
                                     rel="noopener"><svg width="20" height="20" viewBox="0 0 448 512"
@@ -268,7 +268,7 @@
                                         </path>
                                     </svg>
                                 </a>
-                            </dd>
+                            </dd> --}}
                         </dl>
                     </div>
                 </div>

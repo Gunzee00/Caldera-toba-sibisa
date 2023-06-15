@@ -17,19 +17,17 @@
             <label for="gambar">Gambar</label>
             <input type="hidden" name="oldImage" value="{{ $artikel->gambar }}">
             @if ($artikel->gambar)
-                <div src="{{ url('/image//' . $artikel->gambar) }}"
-                    style="max-height: 500px; max-width: 600px; overflow:hidden">
-                    <img class="img-fluid mb-3 col-sm-5" id="preview">
+                <div style="max-height: 500px; max-width: 600px; overflow:hidden">
+                    <img class="img-fluid mb-3 col-sm-5" id="preview" src="{{ url('/image/' . $artikel->gambar) }}">
                 </div>
             @else
                 <div style="max-height: 500px; max-width: 600px; overflow:hidden">
-                    <img class="img-fluid mb-3 col-sm-5 " id="preview">
+                    <img class="img-fluid mb-3 col-sm-5" id="preview">
                 </div>
             @endif
 
-
-            <input type="file" class="form-control" id="gambar" name="gambar" @error('gambar') is-invalid @enderror
-                accept="image/*" onchange="previewImage(event)" required>
+            <input type="file" class="form-control" id="gambar" name="gambar" accept="image/*"
+                onchange="previewImage(event)" required>
 
             @error('gambar')
                 <div class="invalid-feedback">{{ $message }}</div>
@@ -50,6 +48,30 @@
                 preview.src = reader.result;
             }
             reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            var previewImg = document.getElementById('preview');
+            var oldImageValue = "{{ $artikel->gambar }}";
+            if (oldImageValue) {
+                previewImg.src = "{{ url('/image/') }}" + "/" + oldImageValue;
+            }
+        });
+    
+        function previewImage(event) {
+            var input = event.target;
+            var previewImg = document.getElementById('preview');
+    
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    previewImg.src = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                previewImg.src = '';
+            }
         }
     </script>
 @endsection

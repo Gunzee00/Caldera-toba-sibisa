@@ -14,8 +14,8 @@
                 </a>
             </li>
 
-            @if(Auth::check() && Auth::user()->usertype === '2')
-            <li class="dropdown {{ $title === 'User Management' || $title === 'Restore User' ? 'active' : '' }}">
+            @if (Auth::check() && Auth::user()->usertype === '2')
+                <li class="dropdown {{ $title === 'User Management' || $title === 'Restore User' ? 'active' : '' }}">
                     <a href="#" class="menu-toggle nav-link has-dropdown">
                         <i class="fas fa-users"></i>
                         <span>Kelola Akun</span>
@@ -28,6 +28,7 @@
                     </ul>
                 </li>
             @endif
+            @if (Auth::check() && Auth::user()->usertype === '1')
             <li
                 class="dropdown {{ $title === 'Tambah Tiket' || $title === 'Tambah Data Menu' || $title === 'Edit Data Menu' ? 'active' : '' }}">
                 <a href="{{ route('menu') }}" class="nav-link">
@@ -111,6 +112,7 @@
                     <li><a class="nav-link" href="{{ url('/order-finish') }}">Order Finished</a></li>
                 </ul> --}}
             </li>
+            @endif
             {{-- <li
                 class="dropdown {{ $title === 'Data Pemesanan' || $title === 'Pemesanan Selesai' || $title === 'Hasil File' ? 'active' : '' }}">
                 <a href="#" class="menu-toggle nav-link has-dropdown">

@@ -48,16 +48,21 @@
                                             {{-- <td>{{ $data->updated_at->isoFormat('dddd, D MMM Y') }}</td>
                                             <td>{{ $data->tanggal_tiket }}</td> --}}
                                             <td>
-                                                <input multiple="true" type="file" name="img[]">
+                                                <input multiple="true" type="file" name="img[]" required>
                                                 @error('img')
                                                     <div class="text-danger">
                                                         {{ $message }}
                                                     </div>
                                                 @enderror
+                                                @if (!old('img'))
+                                                    <div class="text-info">
+                                                        
+                                                    </div>
+                                                @endif
                                             </td>
                                             <td>
                                                 <button type="submit" multiple="true" class="btn btn-primary" onclick="return confirmUpload()">Upload</button>
-                                              </td>
+                                            </td>
                                         </tr>
                                     </form>
                                 @endforeach
