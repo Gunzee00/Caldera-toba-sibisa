@@ -19,11 +19,11 @@
             <input type="hidden" name="gambar" value="{{ $kamar->gambar }}">
             @if ($kamar->gambar)
                 <div style="max-height: 500px; max-width: 600px; overflow:hidden">
-                    <img class="img-fluid mb-3 col-sm-5" id="preview" src="{{ url('/image/' . $kamar->gambar) }}">
+                    <img value="{{ $kamar->gambar }}" class="img-fluid mb-3 col-sm-5" id="preview" src="{{ url('/image/' . $kamar->gambar) }}">
                 </div>
             @else
                 <div style="max-height: 500px; max-width: 600px; overflow:hidden">
-                    <img class="img-fluid mb-3 col-sm-5" id="preview">
+                    <img value="{{ $kamar->gambar }}" class="img-fluid mb-3 col-sm-5" id="preview">
                 </div>
             @endif
 

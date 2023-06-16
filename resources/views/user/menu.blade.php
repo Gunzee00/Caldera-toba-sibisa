@@ -22,7 +22,7 @@
                   </p>
                   @if($tiket->stok <= 0)
                       <p class="text-danger">*Maaf, stok sudah habis.</p>
-                      <a href="{{ url('pesan') }}/{{ $tiket->id }}" class="btn btn-primary disabled"><i class="fas fa-shopping-cart"></i> Pesan</a>
+                      <a href="{{ url('pesan') }}/{{ $tiket->id }}" class="btn btn-secondaryw disabled"><i class="fas fa-shopping-cart"></i> Pesan</a>
                   @else
                       <a href="{{ url('pesan') }}/{{ $tiket->id }}" class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Pesan</a>
                   @endif

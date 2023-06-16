@@ -46,13 +46,15 @@
                             </div>
                             <div class="form-group">
                                 <label>Gambar Tiket</label>
-                                <input type="file" name="gambar" value="{{ old('gambar') }}">
+                                <input type="file" name="gambar" id="gambar" onchange="previewImage(event)">
+                                <img id="gambar-preview" src="#" alt="Preview Gambar" style="max-width: 200px; display: none;">
                                 @error('gambar')
                                     <div class="text-danger">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
+                            
                             <a href="{{ route('menu') }}"><button type="button" class="btn btn-dark btn-icon-text" value="Save"><i class="mdi mdi-plus-box"></i> Kembali</button></a>
                             <button type="submit" class="btn btn-primary btn-icon-text" value="Save"><i class="mdi mdi-plus-box"></i> Tambahkan</button>
                         </form>
@@ -61,4 +63,15 @@
             </div>
         </div>
 </div>
+<script>
+    function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function() {
+            var preview = document.getElementById('gambar-preview');
+            preview.src = reader.result;
+            preview.style.display = 'block';
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
 @endsection

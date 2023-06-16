@@ -11,12 +11,13 @@
 
                 <div class="blog-box">
                     <div >
+                        
                         <img src="{{ url('/image//' . $item->gambar)  }}" style="width:330px; height:230px;">
                     </div>
                     <div class="card-body">
                     
                         {{-- <span class="blog-text-title">{{ $item->tanggal_rilis }}</span> --}}
-                        <a href="#" class="blog-title">{{ $item->judul_artikel }}</a>
+                        <a href="/user-detail-artikel/{{ $item->id_artikel }}"d class="blog-title">{{ $item->judul_artikel }}</a>
                         <p>{{ Str::limit($item->deskripsi, 20) }}</p>
                         <a href="/user-detail-artikel/{{ $item->id_artikel }}">
                             <div>

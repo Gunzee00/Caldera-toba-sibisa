@@ -53,13 +53,13 @@
                                         <td>
                                             <a href="{{ url('/confirm-order-process/' . $data->id) }}"
                                                 onclick="return confirmConfirmation()">
-                                                <button type="submit" class="btn btn-primary">Confirm</button>
+                                                <button type="submit" class="btn btn-primary">Konfirmasi</button>
                                             </a>
                                         </td>
                                         <td>
                                             <a href="{{ url('/reject-order-process/' . $data->id) }}"
                                                 onclick="return confirmRejection()">
-                                                <button type="submit" class="btn btn-danger">Reject</button>
+                                                <button type="submit" class="btn btn-danger">Tolak </button>
                                             </a>
                                         </td>
                                     </tr>

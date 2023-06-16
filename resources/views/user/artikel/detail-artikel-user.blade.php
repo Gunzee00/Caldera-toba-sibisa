@@ -19,7 +19,7 @@
                             alt="...">
                     </div>
                     <div class="card-body">
-                        <h1 class="card-title">{{ $artikel[0]->judul_artikel }}</h1>
+                        {{-- <h1 class="card-title">{{ $artikel[0]->judul_artikel }}</h1> --}}
                         <p class="card-text">{{ $artikel[0]->deskripsi }}</p>
                     </div>
                 </div>

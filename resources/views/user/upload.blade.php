@@ -63,7 +63,7 @@
 <div class="container d-flex justify-content-center mt-100">
     <div class="row">
         <div class="col-md-12">
-        <h2>PAYMENT FILE UPLOAD</h2>
+        <h2>Mengirim Bukti Pembayaran</h2>
         <a href="{{ route('history.detail') }}"><button type="button" class="btn btn-primary" style="margin-bottom: 15px;">Kembali</button></a>
     <form action="{{ url('/upload-process/'.$dataPesan->id) }}"  method="POST" enctype="multipart/form-data">
       @csrf

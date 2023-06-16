@@ -24,6 +24,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="path/to/lightbox.css" rel="stylesheet" />
     {{-- icon --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
@@ -104,7 +105,7 @@
                 <div class="d-flex align-items-center">
                     @guest
                         @if (Route::has('login'))
-                            <a href="{{ route('login') }}" class="nav-link text-white">Login</a>
+                            <a href="{{ route('login') }}" class="nav-link text-white">Masuk</a>
                         @endif
 
                         @if (Route::has('register'))

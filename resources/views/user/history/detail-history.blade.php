@@ -28,8 +28,8 @@
                             <h5>Selanjutnya silahkan lakukan pembayaran melalui:</h5>
                             <table class="table">
                                 <tr>
-                                    <th>No Rekening BRI atas nama Jerry LumbanGaol</th>
-                                    <td><strong><b>12345678910</b></strong></td>
+                                    <th>No Rekening BRI atas nama RPL 004 BLU BPODT UN</th>
+                                    <td><strong><b>0053-01-005665-03-3</b></strong></td>
                                 </tr>
                                 <tr>
                                     <th>Jumlah Pembayaran</th>
