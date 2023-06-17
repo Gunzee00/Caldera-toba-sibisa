@@ -7,7 +7,7 @@
     <div class="row">
     
             @foreach ($artikel as $item)
-            <div class="card col-sm-4" style="border: 1px solid rgb(0, 0, 0); margin:5px; width:350px; height:auto;justify-content:center; align-items:center;">
+            <div class="card row-sm-4" style="border: 1px solid rgb(0, 0, 0); margin:5px; width:350px; height:auto;justify-content:center; align-items:center;">
 
                 <div class="blog-box">
                     <div >
@@ -21,7 +21,7 @@
                         <p>{{ Str::limit($item->deskripsi, 20) }}</p>
                         <a href="/user-detail-artikel/{{ $item->id_artikel }}">
                             <div>
-                                <button type="submit" class="button-sub">
+                                <button type="submit" class="btn btn-primary">
                                     <span class="button_text-sub"> Selengkapnya</span>
                                     <span class="button_icon-sub">
                                         <i class="fa fa-solid fa-circle-right"></i>

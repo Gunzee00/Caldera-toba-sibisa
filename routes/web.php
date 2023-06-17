@@ -48,6 +48,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Auth::routes();
 
+
+
 Route::get('/list-menu', [MenuController::class, 'menuUser'])->name('product.menu');
 
 Route::get('pesan/{id}', [App\Http\Controllers\PesanController::class, 'index']);
@@ -74,6 +76,8 @@ Route::get('pesanan/{id}', [App\Http\Controllers\HistoryController::class, 'deta
 // Route::post('/reservation', [HomeController::class, 'reservation']);
 
 Route::get('/upload/{id}', [HomeController::class, 'upload'])->name('upload');
+Route::get('/edit-upload/{id}', [HomeController::class, 'Editupload'])->name('upload');
+Route::post('/edit-upload-process/{id}', [HomeController::class, 'Edituploadprocess'])->name('upload');
 
 Route::post('/upload-process/{id}', [HomeController::class, 'uploadProcess'])->name('upload.process');
 
@@ -137,6 +141,7 @@ Route::get('/user-detail-galeri/{id_galeri}', [GaleriUserController::class, 'sho
 
 
 // Restore for admin Tiket
+Route::get('/detail-kamar/{id}', [MenuController::class, 'lihatKamar'])->name('lihat.kamar');
 
 Route::get('/menu', [MenuController::class, 'index'])->name('menu');
 Route::get('/add-menu', [MenuController::class, 'menu'])->name('add.menu');
@@ -144,6 +149,9 @@ Route::post('/add-menu-process', [MenuController::class, 'store'])->name('add.me
 Route::get('/edit-menu', [MenuController::class, 'getUpdate'])->name('edit.menu');
 Route::get('/edit-menu/{id}', [MenuController::class, 'getUpdate'])->name('edit.menu');
 Route::post('/edit-menu-process/{id}', [MenuController::class, 'update'])->name('edit.menu.process');
+
+//detail kamar 
+// Route::get('/detail-kamar-user/{id}', [MenuController::class, 'lihatKamar'])->name('lihat.kamar');
 
 //Restore for admin Kamar
 Route::get('/show-kamar', [KamarController::class, 'index'])->name('show-kamar');

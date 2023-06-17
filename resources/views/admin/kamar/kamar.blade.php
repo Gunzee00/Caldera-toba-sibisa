@@ -63,6 +63,7 @@
                             @endif
                         </p>
                         <a href="/detail-kamar/{{ $item->id_kamar }}"
+                        
                             class="btn btn-primary btn-block btn-sm">Selengkapnya</a>
                         <div class="row my-2">
                             <div class="col">

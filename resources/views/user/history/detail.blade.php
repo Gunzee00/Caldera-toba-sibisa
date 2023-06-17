@@ -181,10 +181,18 @@
                                 <tr>
                                     <td colspan="6" class="text-end" colspan="5"><strong>Total Pembayaran :</strong></td>
                                     <td><strong>Rp. {{ number_format($pesanan->jumlah_harga) }}</strong></td>
+                                    {{-- <td>
+                                        <img src="{{ url('productimage') }}/{{ $pesanan->gambar }}"
+                                            style="width: 100px; height:100px;" class="card-img-top" alt="product image" />
+                                    </td> --}}
+                                    {{-- {{$pesanan->gambar}} --}}
                                     @if($pesanan->status == 1 )
                                     <td><strong><a href="{{ url('/upload/'.$pesanan->id) }}"><button class="btn btn-secondary">Masukkan Bukti Pembayaran</button></a></strong></td>
                                     @else
-                                    <td><strong><button class="btn btn-warning" disabled><b>Bukti Telah dikirim </b></button></strong></td>
+                                    
+                                    <td><strong><a href="{{ url('productimage') }}/{{ $pesanan->gambar }}"><button class="btn btn-warning" disabled><b>Bukti Telah dikirim </b></button></a></strong></td>
+                                    <td><strong><a href="{{ url('/edit-upload/'.$pesanan->id) }}"><button class="btn btn-secondary">Ubah Bukti Pembayaran</button></a></strong></td>
+
                                     @endif
                                 </tr>
                             </table>

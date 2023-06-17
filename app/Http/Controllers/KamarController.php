@@ -60,10 +60,10 @@ class KamarController extends Controller
     {
         $kamar = Kamar::find($id_kamar);
         return view('admin.kamar.detail-kamar', [
-            "title" => 'Update Kamar'
+            "title" => 'Detail Kamar'
         ], ['kamar' => $kamar]);
         return view('admin.kamar.kamar', [
-            "title" => 'Update Kamar'
+            "title" => 'Detail Kamar'
         ], ['kamar' => $kamar]);
     }
 

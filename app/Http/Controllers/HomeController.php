@@ -265,13 +265,39 @@ class HomeController extends Controller
         ], compact('data'));
     }
 
+    public function Editupload($id)
+    {
+        $dataPesan = Pesanan::find($id);
+        return view('user.edit-upload', [
+            "title" => 'Edit Bukti Pembayaran'
+        ], compact('dataPesan'));
+    }
+
+    public function Edituploadprocess(Request $request, $id)
+    {
+        $request->validate([
+            'gambar' => 'required',
+        ]);
+
+        $dataPesanan = Pesanan::where('id', $id)->first();
+
+        if ($request->hasFile('gambar')) {
+            $request->file('gambar')->move('productimage/', $request->file('gambar')->getClientOriginalName());
+            $dataPesanan->gambar = $request->file('gambar')->getClientOriginalName();
+            $dataPesanan->status = 2;
+            $dataPesanan->update();
+        }
+
+        return redirect()->route('history.detail')->with('toast_success', 'Gambar sudah berhasil dikirim');
+    }
     public function upload($id)
     {
         $dataPesan = Pesanan::find($id);
         return view('user.upload', [
-            "title" => 'Upload Gambar'
+            "title" => 'Upload Bukti Pembayaran'
         ], compact('dataPesan'));
     }
+
 
     public function uploadProcess(Request $request, $id)
     {

@@ -119,4 +119,11 @@ class MenuController extends Controller
             "title" => 'List Menu'
         ], compact('dataMenu','kamar'));
     }
+
+  
+//     $kamar = Kamar::find($id_kamar);
+//     return view('user.detail-kamar', [
+//         "title" => 'Lihat Kamar',
+//     ], compact('kamar'));
+// }
 }

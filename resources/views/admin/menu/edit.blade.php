@@ -47,13 +47,18 @@
                             <div class="form-group">
                                 <label>Gambar Produk</label>
                                 <input type="file" name="gambar">
-                                <img src="productimage/{{ $dataMenuUpdate->gambar }}" alt="" style="width: 100px; height:100px;" class="d-block">
+                                @if($dataMenuUpdate->gambar)
+                                    <img src="productimage/{{ $dataMenuUpdate->gambar }}" alt="" style="width: 100px; height:100px;" class="d-block">
+                                @elseif(old('gambar'))
+                                    <img src="productimage/{{ old('gambar') }}" alt="" style="width: 100px; height:100px;" class="d-block">
+                                @endif
                                 @error('gambar')
                                     <div class="text-danger">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
+                            
                             <a href="{{ route('menu') }}"><button type="button" class="btn btn-dark btn-icon-text" value="Save"><i class="mdi mdi-plus-box"></i> Kembali</button></a>
                             <button type="submit" class="btn btn-primary btn-icon-text" value="Save"><i class="mdi mdi-plus-box"></i> Update</button>
                         </form>

@@ -97,6 +97,7 @@
                                     <td><strong><a href="{{ url('/upload/'.$historyPesanan->id) }}"><button class="btn btn-secondary">Upload</button></a></strong></td>
                                     @else
                                     <td><strong><button class="btn btn-success" disabled><b>Finished</b></button></strong></td>
+
                                     @endif
                                 </tr>
                             </table>

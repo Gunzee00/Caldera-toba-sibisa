@@ -3,6 +3,11 @@
     List Menu
 @endsection
 @section('content')
+<style>
+  .custom-margin {
+    margin: 5px; /* Sesuaikan nilai margin yang diinginkan di sini */
+  }
+</style>
     <div class="container ">
         <div class="row">
           <h3>Tiket</h3>
@@ -18,7 +23,7 @@
                       <strong>Harga :</strong> Rp.{{ number_format($tiket->harga) }} <br>
                       <strong>Stok :</strong> {{ $tiket->stok }} <br>
                       <hr>
-                      <strong>Keterangan : {{ $tiket->keterangan }}</strong> <br>
+                      <h>Keterangan : {{ $tiket->keterangan }}</h> <br>
                   </p>
                   @if($tiket->stok <= 0)
                       <p class="text-danger">*Maaf, stok sudah habis.</p>
@@ -40,20 +45,39 @@
         <hr></hr>
           @foreach ($kamar as $kamar)
           <div class="card row-sm-4" style="border: 1px solid rgb(1, 1, 1); margin:5px; width:350px; height:auto;justify-content:center; align-items:center;">
+           
             <img src="{{ url('/image//' . $kamar ->gambar) }}" class="card-img-top">
               <div class="card-body">
                 <h5 class="card-title">{{ $kamar->nama_kamar }}</h5>
                 <p class="card-text">
-                  <strong>Status :</strong>{{ $kamar->status }} <br>
+                  <strong>Status:</strong>
+                  @if($kamar->status == 'Sudah di Booking')
+                      <span style="color: red;">sudah di booking</span>
+                  @else
+                      {{ $kamar->status }}
+                  @endif
                   <hr>
-                  <strong>Deskripsi : {{ $kamar->deskripsi }}</strong> <br>
+                  
+                  <p>Deskripsi : {{ Str::limit($kamar->deskripsi,50)  }}</p> <br>
                 </p>
+                {{-- <a href="/user-detail-artikel/{{ $item->id_artikel }}"> --}}
+                 
+                    <div>
+                  <a href="/detail-kamar-user/{{$kamar->id_kamar}}" >
+                      <button type="submit" class="btn btn-primary custom-margin">
+                          <span class="button_text-sub"> Selengkapnya</span>
+                          <span class="button_icon-sub">
+                              <i class="fa fa-solid fa-circle-right"></i>
+                          </span>
+                      </button>  
+              </a>
                 <a href="https://api.whatsapp.com/send?phone={{$kamar->nomor_telepon}}" target="_blank">
                   <button class="fab fa-whatsapp btn btn-primary"> pesan 
-                </button></a>
+                </button>
+              </a>
+                
               </div>
           </div>
           @endforeach
-      </div>
-  </div>
+          
 @endsection
