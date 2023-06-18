@@ -7,7 +7,7 @@
     <div class="row">
     
             @foreach ($galeri as $item)
-            <div class="card row    -sm-4" style="border: 1px solid rgb(0, 0, 0); margin:5px; width:350px; height:auto;justify-content:center; align-items:center;">
+            <div class="card row-sm-4" style="border: 1px solid rgb(0, 0, 0); margin:5px; width:350px; height:auto;justify-content:center; align-items:center;">
 
                 <div class="blog-box">
                     <div>

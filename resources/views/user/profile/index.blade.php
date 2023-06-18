@@ -1,6 +1,6 @@
 @extends('user.layouts.app')
 @section('title')
-    My Profile
+Profil Saya
 @endsection
 @section('content')
     <div class="container">
@@ -12,8 +12,8 @@
                 <div class="container-fluid">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
-                            <li class="breadcrumb-item">My Profile</li>
+                            <li class="breadcrumb-item"><a href="{{ url('home') }}">Beranda</a></li>
+                            <li class="breadcrumb-item">Profil Saya</li>
                         </ol>
                     </nav>
                 </div>
@@ -21,7 +21,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4><i class="fa fa-user"></i>My Profile</h4>
+                        <h4><i class="fa fa-user"></i>Profil Saya</h4>
                         @if($user->avatar)
                         <img src="avatar/{{ $user->avatar }}" width="200px" height="150px;" style="text-align: center;" alt="{{ $user->avatar }}">
                         @else
@@ -36,14 +36,14 @@
                                 <th>Email</th>
                                 <td>{{ $user->email }}</td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                                 <th>No Hp</th>
                                 <td>{{ $user->nohp }}</td>
                             </tr>
                             <tr>
                                 <th>Alamat</th>
                                 <td>{{ $user->alamat }}</td>
-                            </tr>
+                            </tr> --}}
                         </table>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                         <form method="POST" action="{{ url('profile') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="row mb-3">
-                                <label for="name" class="col-md-2 col-form-label text-md-end">{{ __('Name') }}</label>
+                                <label for="name" class="col-md-2 col-form-label text-md-end">{{ __('Nama') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
@@ -71,7 +71,7 @@
 
                             <div class="row mb-3">
                                 <label for="email"
-                                    class="col-md-2 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                                    class="col-md-2 col-form-label text-md-end">{{ __('Alamat Email') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
@@ -85,7 +85,7 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
+                            {{-- <div class="row mb-3">
                                 <label for="nphp" class="col-md-2 col-form-label text-md-end">No HP</label>
 
                                 <div class="col-md-6">
@@ -114,10 +114,10 @@
                                         </span>
                                     @enderror
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="row mb-3">
-                                <label for="avatar" class="col-md-2 col-form-label text-md-end">Avatar</label>
+                                <label for="avatar" class="col-md-2 col-form-label text-md-end">Gambar Profil</label>
 
                                 <div class="col-md-6">
 
@@ -135,7 +135,7 @@
 
                             <div class="row mb-3">
                                 <label for="password"
-                                    class="col-md-2 col-form-label text-md-end">{{ __('Password') }}</label>
+                                    class="col-md-2 col-form-label text-md-end">{{ __('Kata Sandi') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password"
@@ -151,7 +151,7 @@
 
                             <div class="row mb-3">
                                 <label for="password-confirm"
-                                    class="col-md-2 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
+                                    class="col-md-2 col-form-label text-md-end">{{ __('Konfirmasi Kata Sandi') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"
@@ -162,7 +162,7 @@
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-2">
                                     <button type="submit" class="btn btn-primary">
-                                        Save
+                                        Simpan
                                     </button>
                                 </div>
                             </div>

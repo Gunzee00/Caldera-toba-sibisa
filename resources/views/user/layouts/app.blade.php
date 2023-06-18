@@ -67,7 +67,7 @@
                     <!-- Left links -->
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/') }}">Home</a>
+                            <a class="nav-link" href="{{ url('/') }}">Beranda</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/list-menu">Tiket Masuk dan Kamar</a>

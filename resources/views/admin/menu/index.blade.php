@@ -90,7 +90,7 @@
             integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
         </script>
 
-<script>
+{{-- <script>
     function confirmDelete(event) {
       event.preventDefault(); // Menghentikan tindakan default saat mengklik tautan
     
@@ -109,5 +109,5 @@
     deleteButtons.forEach(function(button) {
       button.addEventListener('click', confirmDelete);
     });
-    </script>
+    </script> --}}
     @endsection
