@@ -18,7 +18,7 @@ class Tiket extends Model
         'tanggal_tiket',
         'stok',
         'keterangan',
-        'gambar',
+        'gambar_tiket',
     ];
 
     public function pesanan_detail()

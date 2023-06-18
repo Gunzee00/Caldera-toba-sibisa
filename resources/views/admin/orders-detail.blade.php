@@ -7,7 +7,7 @@
                     <table class="table table-hover">
                         <tr>
                             <th>No</th>
-                            <th>Gambar</th>
+                            <th>Gambar Tiket</th>
                             <th>Nama tiket</th>
                             <th>Jumlah</th>
                             <th>Harga</th>
@@ -22,7 +22,7 @@
                             <tr>
                                 <td>{{ $no++ }}</td>
                                 <td>
-                                    <img src="{{ url('productimage') }}/{{ $pesanan_detail->tiket->gambar }}"
+                                    <img src="{{ url('productimage') }}/{{ $pesanan_detail->tiket->gambar_tiket }}"
                                         style="width: 100px; height:100px;" class="card-img-top" alt="product image" />
                                 </td>
                                 <td>{{ $pesanan_detail->tiket->jenis_tiket }}</td>

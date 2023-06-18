@@ -46,13 +46,13 @@
                             </div>
                             <div class="form-group">
                                 <label>Gambar Produk</label>
-                                <input type="file" name="gambar">
-                                @if($dataMenuUpdate->gambar)
-                                    <img src="productimage/{{ $dataMenuUpdate->gambar }}" alt="" style="width: 100px; height:100px;" class="d-block">
-                                @elseif(old('gambar'))
-                                    <img src="productimage/{{ old('gambar') }}" alt="" style="width: 100px; height:100px;" class="d-block">
+                                <input type="file" name="gambar_tiket">
+                                @if($dataMenuUpdate->gambar_tiket)
+                                    <img src="productimage/{{ $dataMenuUpdate->gambar_tiket }}" alt="" style="width: 100px; height:100px;" class="d-block">
+                                @elseif(old('gambar_tiket'))
+                                    <img src="productimage/{{ old('gambar_tiket') }}" alt="" style="width: 100px; height:100px;" class="d-block">
                                 @endif
-                                @error('gambar')
+                                @error('gambar_tiket')
                                     <div class="text-danger">
                                         {{ $message }}
                                     </div>

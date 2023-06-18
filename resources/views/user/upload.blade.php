@@ -70,8 +70,8 @@
       <div class="file-drop-area"  style="border: 1px solid black">
         <span class="choose-file-button">Choose files</span>
         <span class="file-message">or drag and drop files here</span>
-        <input class="file-input" type="file" multiple name="gambar">
-        @error('gambar')
+        <input class="file-input" type="file" multiple name="bukti_pembayaran">
+        @error('bukti_pembayaran')
             <div class="text-danger">
               {{ $message }}
             </div>

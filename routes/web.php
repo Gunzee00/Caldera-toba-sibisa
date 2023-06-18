@@ -151,7 +151,7 @@ Route::get('/edit-menu/{id}', [MenuController::class, 'getUpdate'])->name('edit.
 Route::post('/edit-menu-process/{id}', [MenuController::class, 'update'])->name('edit.menu.process');
 
 //detail kamar 
-// Route::get('/detail-kamar-user/{id}', [MenuController::class, 'lihatKamar'])->name('lihat.kamar');
+Route::get('/detail-kamar-user/{id}', [MenuController::class, 'show'])->name('lihat.kamar');
 
 //Restore for admin Kamar
 Route::get('/show-kamar', [KamarController::class, 'index'])->name('show-kamar');

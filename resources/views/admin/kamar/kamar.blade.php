@@ -14,14 +14,14 @@
         </div>
 
         <div class="form-group" enctype="multipart/form-data">
-            <label for="gambar">Gambar</label>
+            <label for="gambar_kamar">Gambar</label>
             <div style="max-height: 500px; max-width: 600px; overflow:hidden">
                 <img class="img-fluid mb-3 col-sm-5" id="preview">
             </div>
-            <input placeholder="Masukkan Gambar Kamar" type="file" class="form-control" id="gambar" name="gambar"
-                @error('gambar') is-invalid @enderror accept="image/*" onchange="previewImage(event)" required multiple>
+            <input placeholder="Masukkan Gambar Kamar" type="file" class="form-control" id="gambar_kamar" name="gambar_kamar"
+                @error('gambar_kamar') is-invalid @enderror accept="image/*" onchange="previewImage(event)" required multiple>
 
-            @error('gambar')
+            @error('gambar_kamar')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
@@ -49,7 +49,7 @@
                 <div class="card">
                     {{-- <img src="{{ url('public.image') }}/{{ $item->gambar }}" alt="gambar" class="card-img-top"> --}}
                     <div style="height: 150px; max-width: 600px; overflow:hidden">
-                        <img src="{{ url('/image//' . $item ->gambar) }}" class="card-img-top">
+                        <img src="{{ url('/image//' . $item ->gambar_kamar) }}" class="card-img-top">
                     </div>
                     <div class="card-body">
                         {{-- <p class="card-text">{{ $item->tanggal_rilis }}</p> --}}

@@ -53,7 +53,7 @@
                                                         {{ $data->stok }}
                                                     @endif
                                                 </td>
-                                                <td class="text-center"><img src="productimage/{{ $data->gambar }}"
+                                                <td class="text-center"><img src="productimage/{{ $data->gambar_tiket }}"
                                                         style="height: 100px; width:100px; align-item:center;"
                                                         alt="produk"></td>
                                                 <td class="text-center">

@@ -38,6 +38,7 @@
                                 <tr>
                                     <th>Kode pemesanan anda</th>
                                     <td><strong>{{ $historyPesanan->kode }}</strong></td>
+                                    
                                 </tr>
                             </table>
                         </div>
@@ -47,9 +48,13 @@
                     <div class="card-header">
                         <h4><i class="fa fa-shopping-cart"></i> Detail Pemesanan</h4>
                         @if (!empty($historyPesanan))
-                            <p class="text-end">Tanggal Pesan : {{ $historyPesanan->tanggal }}</p>
+                            <p class="text-end">Tanggal Pesan : {{ $historyPesanan->tanggal_pemesanan   }}</p>
                             @if($historyPesanan->status == 1)
-                            <p class="text-end text-danger">*setelah melakukan pembayaran, silahkan upload bukti pembayaran dibawah ini</p>
+                            <p class=" text-danger">Perhatian: </p>
+
+                            <p class=" text-danger">1. Setelah melakukan pembayaran, silahkan upload bukti pembayaran dibawah ini</p>
+                            <p class=" text-danger">2. Harap membayar sesuai dengan jumlah yang telah di tetapkan. Jika tidak sesuai dengan yang ditetapkan, maaf pemesanan anda akan di batalkan </p>
+
                             @endif
                     </div>
                     <div class="card-body">
@@ -72,7 +77,7 @@
                                     <tr>
                                         <td>{{ $no++ }}</td>
                                         <td>
-                                            <img src="{{ url('productimage') }}/{{ $pesanan_detail->tiket->gambar }}"
+                                            <img src="{{ url('productimage') }}/{{ $pesanan_detail->tiket->gambar_tiket }}"
                                                 style="width: 100px; height:100px;" class="card-img-top" alt="product image" />
                                         </td>
                                         <td>{{ $pesanan_detail->tiket->jenis_tiket }}</td>

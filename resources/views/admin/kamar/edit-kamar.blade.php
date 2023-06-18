@@ -15,22 +15,22 @@
                 rows="10" required>{{ $kamar->deskripsi }}</textarea>
         </div>
         <div class="form-group">
-            <label for="gambar">Gambar</label>
-            <input type="hidden" name="gambar" value="{{ $kamar->gambar }}">
-            @if ($kamar->gambar)
+            <label for="gambar_kamar">Gambar</label>
+            <input type="hidden" name="gambar_kamar" value="{{ $kamar->gambar_kamar }}">
+            @if ($kamar->gambar_kamar)
                 <div style="max-height: 500px; max-width: 600px; overflow:hidden">
-                    <img value="{{ $kamar->gambar }}" class="img-fluid mb-3 col-sm-5" id="preview" src="{{ url('/image/' . $kamar->gambar) }}">
+                    <img value="{{ $kamar->gambar_kamar }}" class="img-fluid mb-3 col-sm-5" id="preview" src="{{ url('/image/' . $kamar->gambar_kamar) }}">
                 </div>
             @else
                 <div style="max-height: 500px; max-width: 600px; overflow:hidden">
-                    <img value="{{ $kamar->gambar }}" class="img-fluid mb-3 col-sm-5" id="preview">
+                    <img value="{{ $kamar->gambar_kamar }}" class="img-fluid mb-3 col-sm-5" id="preview">
                 </div>
             @endif
 
-            <input type="file" class="form-control" id="gambar" name="gambar" accept="image/*"
+            <input type="file" class="form-control" id="gambar_kamar" name="gambar_kamar" accept="image/*"
                 onchange="previewImage(event)" required>
 
-            @error('gambar')
+            @error('gambar_kamar')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
@@ -65,7 +65,7 @@
         <script>
             window.addEventListener('DOMContentLoaded', (event) => {
                 var previewImg = document.getElementById('preview');
-                var gambarValue = "{{ $kamar->gambar }}";
+                var gambarValue = "{{ $kamar->gambar_kamar }}";
                 if (gambarValue) {
                     previewImg.src = "{{ url('/image/') }}" + "/" + gambarValue;
                 }

@@ -149,7 +149,7 @@
                                  <tr>
                                      <td>{{ $no++ }}</td>
                                      <td>
-                                         <img src="{{ url('productimage') }}/{{ $pesanan_detail->tiket->gambar }}"
+                                         <img src="{{ url('productimage') }}/{{ $pesanan_detail->tiket->gambar_tiket }}"
                                              style="width: 100px; height:100px;" class="card-img-top"  alt="product image" />
                                      </td>
                                      <td>{{ $pesanan_detail->tiket->jenis_tiket }}</td>
@@ -190,7 +190,7 @@
                                     <td><strong><a href="{{ url('/upload/'.$pesanan->id) }}"><button class="btn btn-secondary">Masukkan Bukti Pembayaran</button></a></strong></td>
                                     @else
                                     
-                                    <td><strong><a href="{{ url('productimage') }}/{{ $pesanan->gambar }}"><button class="btn btn-warning" disabled><b>Bukti Telah dikirim </b></button></a></strong></td>
+                                    <td><strong><a href="{{ url('productimage') }}/{{ $pesanan->bukti_pembayaran }}"><button class="btn btn-warning" disabled><b>Bukti Telah dikirim </b></button></a></strong></td>
                                     <td><strong><a href="{{ url('/edit-upload/'.$pesanan->id) }}"><button class="btn btn-secondary">Ubah Bukti Pembayaran</button></a></strong></td>
 
                                     @endif

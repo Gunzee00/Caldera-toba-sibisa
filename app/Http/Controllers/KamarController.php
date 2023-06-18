@@ -27,22 +27,22 @@ class KamarController extends Controller
 
     public function store(Request $request)
     {
-        if ($request->hasFile('gambar')) {
+        if ($request->hasFile('gambar_kamar')) {
             $request->validate([
                 'nama_kamar' => 'required',
                 'deskripsi' => 'required',
                 'status' => 'required',
                 'nomor_telepon' => 'required',
-                'gambar'   => 'required|image|mimes:jpeg,png,jpg|max:5000'
+                'gambar_kamar'   => 'required|image|mimes:jpeg,png,jpg|max:5000'
             ]);
-            $fileName = time() . '.' . $request->gambar->extension();
-            $request->gambar->move(public_path('image'), $fileName);
+            $fileName = time() . '.' . $request->gambar_kamar->extension();
+            $request->gambar_kamar->move(public_path('image'), $fileName);
             $kamar = new Kamar();
             $kamar->nama_kamar = $request->nama_kamar;
             $kamar->deskripsi = $request->deskripsi;
             $kamar->status = $request->status;
             $kamar->nomor_telepon = $request->nomor_telepon;
-            $kamar->gambar = $fileName;
+            $kamar->gambar_kamar = $fileName;
 
             $kamar->save();
 
@@ -95,7 +95,7 @@ class KamarController extends Controller
             'deskripsi' => 'required',
             'status' => 'required',
             'nomor_telepon' => 'required',
-            'gambar'    => 'required|mimes:jpeg,png,jpg|image|max:2048'
+            'gambar_kamar'    => 'required|mimes:jpeg,png,jpg|image|max:2048'
         ]);
 
         $kamar = Kamar::where('id_kamar', $id_kamar)->first();
@@ -104,9 +104,9 @@ class KamarController extends Controller
         $kamar->status = $request->status;
         $kamar->nomor_telepon = $request->nomor_telepon;
 
-        if ($request->hasFile('gambar')) {
-            $request->file('gambar')->move('image', $request->file('gambar')->getClientOriginalName());
-            $kamar->gambar = $request->file('gambar')->getClientOriginalName();
+        if ($request->hasFile('gambar_kamar')) {
+            $request->file('gambar_kamar')->move('image', $request->file('gambar_kamar')->getClientOriginalName());
+            $kamar->gambar_kamar = $request->file('gambar_kamar')->getClientOriginalName();
             $kamar->update();
             return redirect('/show-kamar') ->with('toast_success', 'Sukses, Kamar berhasil di update');;
            

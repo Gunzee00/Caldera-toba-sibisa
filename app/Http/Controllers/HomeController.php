@@ -276,14 +276,14 @@ class HomeController extends Controller
     public function Edituploadprocess(Request $request, $id)
     {
         $request->validate([
-            'gambar' => 'required',
+            'bukti_pembayaran' => 'required',
         ]);
 
         $dataPesanan = Pesanan::where('id', $id)->first();
 
-        if ($request->hasFile('gambar')) {
-            $request->file('gambar')->move('productimage/', $request->file('gambar')->getClientOriginalName());
-            $dataPesanan->gambar = $request->file('gambar')->getClientOriginalName();
+        if ($request->hasFile('bukti_pembayaran')) {
+            $request->file('bukti_pembayaran')->move('productimage/', $request->file('bukti_pembayaran')->getClientOriginalName());
+            $dataPesanan->bukti_pembayaran = $request->file('bukti_pembayaran')->getClientOriginalName();
             $dataPesanan->status = 2;
             $dataPesanan->update();
         }
@@ -303,14 +303,14 @@ class HomeController extends Controller
     {
         // dd($request);
         $request->validate([
-            'gambar' => 'required',
+            'bukti_pembayaran' => 'required',
         ]);
 
         $dataPesanan = Pesanan::where('id', $id)->first();
 
-        if ($request->hasFile('gambar')) {
-            $request->file('gambar')->move('productimage/', $request->file('gambar')->getClientOriginalName());
-            $dataPesanan->gambar = $request->file('gambar')->getClientOriginalName();
+        if ($request->hasFile('bukti_pembayaran')) {
+            $request->file('bukti_pembayaran')->move('productimage/', $request->file('bukti_pembayaran')->getClientOriginalName());
+            $dataPesanan->bukti_pembayaran = $request->file('bukti_pembayaran')->getClientOriginalName();
             $dataPesanan->status = 2;
             $dataPesanan->update();
         }

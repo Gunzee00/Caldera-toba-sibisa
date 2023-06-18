@@ -30,9 +30,9 @@ class Pesanan extends Model
         return $this->hasOne(Tiket::class, 'id', 'tiket_id');
     }
 
-    public function photos()
+    public function penjualan_tiket()
     {
-        return $this->hasMany(Photo::class, 'pesanan_id', 'id');
+        return $this->hasMany(PenjualanTiket::class, 'pesanan_id', 'id');
     }
 }
 

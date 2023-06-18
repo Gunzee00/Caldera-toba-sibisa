@@ -33,7 +33,7 @@ class MenuController extends Controller
             'harga' => 'required',
             'keterangan' => 'required',
             'stok' => 'required',
-            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'gambar_tiket' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $menu = Tiket::create([
@@ -41,12 +41,12 @@ class MenuController extends Controller
             'harga' => $request->harga,
             'keterangan' => $request->keterangan,
             'stok' => $request->stok,
-            'gambar' => $request->gambar,
+            'gambar_tiket' => $request->gambar_tiket,
         ]);
 
-        if ($request->hasFile('gambar')) {
-            $request->file('gambar')->move('productimage/', $request->file('gambar')->getClientOriginalName());
-            $menu->gambar = $request->file('gambar')->getClientOriginalName();
+        if ($request->hasFile('gambar_tiket')) {
+            $request->file('gambar_tiket')->move('productimage/', $request->file('gambar_tiket')->getClientOriginalName());
+            $menu->gambar_tiket = $request->file('gambar_tiket')->getClientOriginalName();
             $menu->save();
         }
 
@@ -72,11 +72,11 @@ class MenuController extends Controller
             'stok' => 'required',
         ]);
         $update = ['jenis_tiket' => $request->jenis_tiket, 'harga' => $request->harga, 'keterangan' => $request->keterangan, 'stok' => $request->stok];
-        if ($files = $request->file('gambar')) {
+        if ($files = $request->file('gambar_tiket')) {
             $destinationPath = 'productimage/'; // upload path
             $profileImage = date('YmdHis') . "." . $files->getClientOriginalName();
             $files->move($destinationPath, $profileImage);
-            $update['gambar'] = "$profileImage";
+            $update['gambar_tiket'] = "$profileImage";
         }
         $update['jenis_tiket'] = $request->get('jenis_tiket');
         $update['harga'] = $request->get('harga');
@@ -120,6 +120,16 @@ class MenuController extends Controller
         ], compact('dataMenu','kamar'));
     }
 
+    public function show($id_kamar)
+    {
+        $kamar = Kamar::find($id_kamar);
+        return view('user.detail-kamar', [
+            "title" => 'Detail Kamar'
+        ], ['kamar' => $kamar]);
+        return view('admin.kamar.kamar', [
+            "title" => 'Detail Kamar'
+        ], ['kamar' => $kamar]);
+    }
   
 //     $kamar = Kamar::find($id_kamar);
 //     return view('user.detail-kamar', [

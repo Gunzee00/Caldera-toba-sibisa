@@ -187,7 +187,7 @@ class PesanController extends Controller
         $dataConfirmProcess = Pesanan::where('id', $id)->first();
         $dataConfirmProcess->status = 3;
         $dataConfirmProcess->update();
-        return redirect()->route('oder.deatail')->with('toast_success', 'Data has been confirmed');
+        return redirect()->route('oder.deatail')->with('toast_success', 'Pesanan berhasil di konfirmasi');
     }
     //menolak pemesanan
     public function rejectOrderProcess($id)
@@ -196,7 +196,7 @@ class PesanController extends Controller
         $dataRejectProcess->status = 6;
         // return $dataRejectProcess;
         $dataRejectProcess->update();
-        return redirect()->route('oder.deatail')->with('toast_success', 'Data has been rejected');
+        return redirect()->route('oder.deatail')->with('toast_success', 'Pesanan berhasil di tolak');
     }
     public function orderResult(Request $request)
     {
@@ -247,14 +247,14 @@ class PesanController extends Controller
             foreach ($images as $image) {
                 $filename = $image->getClientOriginalName();
                 $image->move('productimage/', $filename);
-                $dataConfirmPhotoProcess->photos()->create(['gambar_tiket' => $filename]);
+                $dataConfirmPhotoProcess->penjualan_tiket()->create(['gambar_tiket' => $filename]);
             }
 
             $dataConfirmPhotoProcess->status = 4;
             $dataConfirmPhotoProcess->save();
         }
 
-        return redirect()->route('confirm.photo')->with('toast_success', 'Bukti berhasil diupload');
+        return redirect()->route('confirm.photo')->with('toast_success', 'Tiket berhasil di kirimkan');
     }
 
 

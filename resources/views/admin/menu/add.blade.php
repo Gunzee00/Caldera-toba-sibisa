@@ -46,9 +46,9 @@
                             </div>
                             <div class="form-group">
                                 <label>Gambar Tiket</label>
-                                <input type="file" name="gambar" id="gambar" onchange="previewImage(event)">
+                                <input type="file" name="gambar_tiket" id="gambar_tiket" onchange="previewImage(event)">
                                 <img id="gambar-preview" src="#" alt="Preview Gambar" style="max-width: 200px; display: none;">
-                                @error('gambar')
+                                @error('gambar_tiket')
                                     <div class="text-danger">
                                         {{ $message }}
                                     </div>
