@@ -48,13 +48,13 @@
                         <div class="row my-2">
                             <div class="col">
                                 <a href="/edit-galeri/{{ $item->id_galeri }}"
-                                    class="btn btn-primary btn-block btn-sm">Edit</a>
+                                    class="btn btn-primary btn-block btn-sm">Ubah</a>
                             </div>
                             <div class="col">
                                 <form action="delete-galeri/{{ $item->id_galeri }}" method="POST" id="deleteForm{{ $item->id_galeri }}">
                                   @csrf
                                   @method('delete')
-                                  <input type="submit" class="btn btn-danger btn-block btn-sm" value="Delete" onclick="return confirmDelete('{{ $item->id_galeri }}')">
+                                  <input type="submit" class="btn btn-danger btn-block btn-sm" value="Hapus" onclick="return confirmDelete('{{ $item->id_galeri }}')">
                                 </form>
                               </div>
                         </div>
