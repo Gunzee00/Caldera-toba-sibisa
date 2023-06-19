@@ -141,7 +141,7 @@ Route::get('/user-detail-galeri/{id_galeri}', [GaleriUserController::class, 'sho
 
 
 // Restore for admin Tiket
-Route::get('/detail-kamar/{id}', [MenuController::class, 'lihatKamar'])->name('lihat.kamar');
+// Route::get('/detail-kamar/{id}', [MenuController::class, 'lihatKamar'])->name('lihat.kamar');
 
 Route::get('/menu', [MenuController::class, 'index'])->name('menu');
 Route::get('/add-menu', [MenuController::class, 'menu'])->name('add.menu');

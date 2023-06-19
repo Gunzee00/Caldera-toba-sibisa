@@ -14,7 +14,7 @@
         <label for="tempat_tinggal">Tempat Tinggal</label>
         <input type="text" class="form-control" value="{{ old('tempat_tinggal', $data->tempat_tinggal) }}"  id="tempat_tinggal" name="tempat_tinggal" required>
     </div>
-    <button type="submit" class="btn btn-primary">Tambah</button>
+    <button type="submit" class="btn btn-primary">Simpan</button>
 </form>
 
 </div>

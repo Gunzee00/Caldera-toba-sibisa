@@ -11,7 +11,7 @@
         
         <p class="card-text">{{ $kamar->deskripsi }}</p>
        
-        <a href="/show-kamar" class="btn btn-primary btn-block btn-sm">kembali</a>
+        <a href="/list-menu " class="btn btn-primary btn-block btn-sm">kembali</a>
     </div>
 </div>
 @endsection

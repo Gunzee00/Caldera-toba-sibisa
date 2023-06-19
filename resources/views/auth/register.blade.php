@@ -13,7 +13,7 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
-                        <div class="row mb-3">
+                        <div class="row mb-4">
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Nama') }}</label>
 
                             <div class="col-md-6">
@@ -27,7 +27,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        <div class="row mb-4">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Alamat Email') }}</label>
 
                             <div class="col-md-6">
@@ -35,13 +35,13 @@
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>Email telah digunakan</strong>
                                     </span>
                                 @enderror
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        <div class="row mb-4">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Kata Sandi') }}</label>
 
                             <div class="col-md-6">
@@ -49,24 +49,24 @@
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                        <strong>Kata sandi minimal 8 karakter</strong>
+                                    </span> 
                                 @enderror
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        <div class="row mb-4">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Konfirmasi Kata Sandi') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">                                    
                             </div>
                         </div>
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Daftargit add') }}
+                                    {{ __('Daftar') }}
                                 </button>
                             </div>
                         </div>

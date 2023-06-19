@@ -23,7 +23,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
-                                <img src="{{ url('productimage') }}/{{ $tiket->gambar }}" width="445px" alt="">
+                                <img src="{{ url('productimage') }}/{{ $tiket->gambar_tiket }}" width="445px" alt="">
                             </div>
                             <div class="col-md-6 mt-4">
                                 <h3>{{ $tiket->jenis_tiket }}</h3>

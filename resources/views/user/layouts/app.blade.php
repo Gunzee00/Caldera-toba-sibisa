@@ -133,6 +133,10 @@
                                     ->where('status', 5)
                                     ->where('user_id', Auth::user()->id)
                                     ->get();
+                                $tracking = \DB::table('pesanans')
+                                    ->where('status', 6)
+                                    ->where('user_id', Auth::user()->id)
+                                    ->get();
                             @endphp
                             <div class="dropdown">
                                 <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#"
@@ -159,6 +163,12 @@
                                         <li>
                                             <a class="dropdown-item"
                                                 href="{{ url('pesanan/' . $item->id) }}">{{ 'Tiket anda sudah di kirim' }}</a>
+                                        </li>
+                                    @endforeach
+                                    @foreach ($tracking as $item)
+                                        <li>
+                                            <a class="dropdown-item"
+                                                href="{{ url('pesanan/' . $item->id) }}">{{ 'Pesanan anda ditolak' }}</a>
                                         </li>
                                     @endforeach
                                 </ul>
