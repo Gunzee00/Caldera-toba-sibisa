@@ -114,7 +114,9 @@ class MenuController extends Controller
     public function menuUser()
     {
         $dataMenu = Tiket::all();
+       
         $kamar = Kamar::all();
+        
         return view('user.menu', [
             "title" => 'List Menu'
         ], compact('dataMenu','kamar'));

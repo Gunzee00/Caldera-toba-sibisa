@@ -36,6 +36,7 @@
       @endforeach
       
         </div>
+       
 
 
     </div>
@@ -44,8 +45,7 @@
         <h3>Kamar</h3>
         <hr></hr>
           @foreach ($kamar as $kamar)
-          <div class="card row-sm-4" style="border: 1px solid rgb(1, 1, 1); margin:5px; width:350px; height:auto;justify-content:center; align-items:center;">
-           
+          <div class="card row-sm-4" style="border: 1px solid rgb(1, 1, 1); margin:5px; width:350px; height:auto;justify-content:center; align-items:center;">           
             <img src="{{ url('/image//' . $kamar ->gambar_kamar) }}" class="card-img-top">
               <div class="card-body">
                 <h5 class="card-title">{{ $kamar->nama_kamar }}</h5>
@@ -56,12 +56,10 @@
                   @else
                       {{ $kamar->status }}
                   @endif
-                  <hr>
-                  
+                  <hr>                  
                   <p>Deskripsi : {{ Str::limit($kamar->deskripsi,50)  }}</p> <br>
                 </p>
                 {{-- <a href="/user-detail-artikel/{{ $item->id_artikel }}"> --}}
-                 
                     <div>
                   <a href="/detail-kamar-user/{{$kamar->id_kamar}}" >
                       <button type="submit" class="btn btn-primary custom-margin">
@@ -77,6 +75,7 @@
               </a>
                 
               </div>
+          </div>
           </div>
           @endforeach
           

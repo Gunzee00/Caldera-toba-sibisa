@@ -27,12 +27,12 @@
                 </div>
             @endif
 
-            <input type="file" class="form-control" id="gambar_kamar" name="gambar_kamar" accept="image/*"
-                onchange="previewImage(event)" required>
+                <input type="file" class="form-control"  id="gambar_kamar" name="gambar_kamar" accept="image/*"
+                    onchange="previewImage(event)" required>
 
-            @error('gambar_kamar')
-                <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
+                @error('gambar_kamar')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
         </div>
         <div class="form-group">
             <label for="nomor_telepon">Nomor Telpon </label>
