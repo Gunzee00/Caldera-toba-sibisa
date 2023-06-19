@@ -15,6 +15,8 @@ class GaleriUserController extends Controller
     public function index()
     {
         $galeri = Galeri::all();
+                $galeri = Galeri::paginate(6); // 
+
         return view('user.galeri.galeri-user', compact('galeri'));
     }
 

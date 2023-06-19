@@ -24,6 +24,7 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th scope="col">No</th>
                     <th scope="col">Nama Pengunjung</th>
                     <th scope="col">Nik</th>
                     <th scope="col">Tempat Tinggal</th>
@@ -32,9 +33,11 @@
                     </th>
                 </tr>
             </thead>
+            @php $no = ($datapengunjung->currentPage() - 1) * $datapengunjung->perPage() + 1; @endphp
             @foreach ($datapengunjung as $item)
                 <tbody>
                     <tr>
+                        <td>{{ $no++ }}</td>
                         <td>{{ $item->nama_pengunjung }}</td>
                         <td>{{ $item->nik }}</td>
                         <td>{{ $item->tempat_tinggal }}</td>
@@ -55,6 +58,7 @@
             @endforeach
             </tbody>
         </table>
+        {{ $datapengunjung->links() }}
     </div>
     {{-- <a href="{{ route('add-artikel') }}" class="btn btn-primary">Tambah Artikel</a> --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"

@@ -32,6 +32,7 @@
     {{-- Menampilkan data --}}
 
     <div class="row">
+
         @foreach ($artikel as $item)
             <div class="col-4">
                 <div class="card">
@@ -65,7 +66,9 @@
                 </div>
             </div>
         @endforeach
+        {{ $artikel->links() }}
     </div>
+    
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"

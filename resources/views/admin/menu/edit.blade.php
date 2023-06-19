@@ -46,7 +46,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Gambar Produk</label>
-                                <input type="file" name="gambar_tiket">
+                                <input type="file" name="gambar_tiket" accept="image/*">
                                 @if($dataMenuUpdate->gambar_tiket)
                                     <img src="productimage/{{ $dataMenuUpdate->gambar_tiket }}" alt="" style="width: 100px; height:100px;" class="d-block">
                                 @elseif(old('gambar_tiket'))

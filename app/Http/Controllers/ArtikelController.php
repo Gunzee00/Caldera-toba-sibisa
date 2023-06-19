@@ -24,7 +24,7 @@ class ArtikelController extends Controller
     public function index()
     {
         $artikel = Artikel::all();
-
+        $artikel = Artikel::paginate(3); // 
         return view('admin.artikel.artikel', [
             "title" => 'Artikel'
         ], compact('artikel'));

@@ -31,7 +31,8 @@
                                     <th>Jumlah Harga</th>
                                     <th>Aksi</th>
                                 </tr>
-                                <?php $no = 1; ?>
+                                @php $no = ($pesanans->currentPage() - 1) * $pesanans->perPage() + 1; @endphp
+
                                 @foreach ($pesanans as $pesanan)
                                     @if (
                                         $pesanan->status == 1 ||
@@ -67,6 +68,7 @@
                                     @endif
                                 @endforeach
                             </table>
+                            {{ $pesanans->links() }}
                         </div>
                     </div>
                 </div>

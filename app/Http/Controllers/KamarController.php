@@ -13,6 +13,7 @@ class KamarController extends Controller
     public function index()
     {
         $kamar = Kamar::all();
+        $kamar = Kamar::paginate(3); // 
         return view('admin.kamar.kamar', [
             "title" => 'Tambah Kamar'
         ], compact('kamar'));

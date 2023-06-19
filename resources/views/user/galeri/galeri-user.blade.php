@@ -35,6 +35,7 @@
                 </div>
             @endforeach
         </div>
+        {{ $galeri->links() }}
         </div>
         <script src="path/to/lightbox.js"></script>
 @endsection

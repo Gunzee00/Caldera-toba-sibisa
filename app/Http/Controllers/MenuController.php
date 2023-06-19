@@ -13,7 +13,7 @@ class MenuController extends Controller
 {
     public function index()
     {
-        $dataMenu = Tiket::paginate(5);
+        $dataMenu = Tiket::paginate(4);
         return view('admin.menu.index', [
             "title" => 'Tambah Tiket'
         ], compact('dataMenu'));

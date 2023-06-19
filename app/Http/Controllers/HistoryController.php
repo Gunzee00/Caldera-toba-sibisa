@@ -29,7 +29,7 @@ class HistoryController extends Controller
         // $pesanans = DB::table('pesanans')->join('photos','pesanans.id','=','photos.pesanan_id')
         // ->select('pesanans.*','photos.gambar')
         // ->get();
-
+        $pesanans = Pesanan::paginate(5);  // 
         return view('user.history.index', [
             "title" => 'Pesanan'
         ], compact('pesanans'));

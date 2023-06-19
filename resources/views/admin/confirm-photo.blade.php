@@ -48,7 +48,7 @@
                                             {{-- <td>{{ $data->updated_at->isoFormat('dddd, D MMM Y') }}</td>
                                             <td>{{ $data->tanggal_tiket }}</td> --}}
                                             <td>
-                                                <input multiple="true" type="file" name="img[]" required>
+                                                <input multiple="true" type="file" accept="image/*" name="img[]" required>
                                                 @error('img')
                                                     <div class="text-danger">
                                                         {{ $message }}

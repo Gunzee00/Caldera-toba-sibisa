@@ -17,6 +17,7 @@ class DataPengunjungController extends Controller
     public function index()
     {
         $datapengunjung = datapengunjung::all();
+        $datapengunjung = datapengunjung::paginate(10); // 
         return view('admin.data_pengunjung.datapengunjung', [
             "title" => 'Data Pengunjung'
         ], compact('datapengunjung'));
