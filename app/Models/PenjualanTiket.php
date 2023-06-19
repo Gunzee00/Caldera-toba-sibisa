@@ -11,7 +11,7 @@ class PenjualanTiket extends Model
     protected $table = 'penjualan_tiket';
 
     protected $fillable = [
-        'gambar_tiket',
+        'gambar_penjualan',
         'pesanan_id',
     ];
 

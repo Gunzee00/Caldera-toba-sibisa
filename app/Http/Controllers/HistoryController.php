@@ -39,11 +39,11 @@ class HistoryController extends Controller
     {
         $pesanan = Pesanan::where('id', $id)->first();
         $pesanan_details = PesananDetail::where('pesanan_id', $pesanan->id)->get();
-        $gambar_tiket = PenjualanTiket::where('pesanan_id', $pesanan->id)->get();
+        $gambar_penjualan = PenjualanTiket::where('pesanan_id', $pesanan->id)->get();
 
         return view('user.history.detail', [
             "title" => 'Pesanan | Detail Pemesanan'
-        ], compact('pesanan', 'pesanan_details', 'gambar_tiket'));
+        ], compact('pesanan', 'pesanan_details', 'gambar_penjualan'));
     }
     
     public function history()

@@ -14,7 +14,7 @@
                                 <input type="text" name="jenis_tiket" class="form-control" placeholder="Nama Tiket" value="{{ old('jenis_tiket') }}">
                                 @error('jenis_tiket')
                                     <div class="text-danger">
-                                        {{ $message }}
+                                        Masukkan nama tiket
                                     </div>
                                 @enderror
                             </div>
@@ -22,7 +22,7 @@
                                 <input type="number" name="harga" class="form-control" placeholder="Harga Tiket" value="{{ old('harga') }}">
                                 @error('harga')
                                     <div class="text-danger">
-                                        {{ $message }}
+                                        Masukkan harga tiket
                                     </div>
                                 @enderror
                             </div>
@@ -31,7 +31,7 @@
                                     placeholder="Keterangan Tiket"  value="{{ old('keterangan') }}" >
                                 @error('keterangan')
                                     <div class="text-danger">
-                                        {{ $message }}
+                                        Masukkan keterangan tiket 
                                     </div>
                                 @enderror
                             </div>
@@ -40,7 +40,7 @@
                                     placeholder="Stok" value="{{ old('stok') }}">
                                 @error('stok')
                                     <div class="text-danger">
-                                        {{ $message }}
+                                        Masukkan stok tiket 
                                     </div>
                                 @enderror
                             </div>
@@ -50,11 +50,10 @@
                                 <img id="gambar-preview" src="#" alt="Preview Gambar" style="max-width: 200px; display: none;">
                                 @error('gambar_tiket')
                                     <div class="text-danger">
-                                        {{ $message }}
+                                        Masukkan gambar tiket 
                                     </div>
                                 @enderror
-                            </div>
-                            
+                            </div>                        
                             <a href="{{ route('menu') }}"><button type="button" class="btn btn-dark btn-icon-text" value="Save"><i class="mdi mdi-plus-box"></i> Kembali</button></a>
                             <button type="submit" class="btn btn-primary btn-icon-text" value="Save"><i class="mdi mdi-plus-box"></i> Tambahkan</button>
                         </form>

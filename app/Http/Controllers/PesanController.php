@@ -247,7 +247,7 @@ class PesanController extends Controller
             foreach ($images as $image) {
                 $filename = $image->getClientOriginalName();
                 $image->move('productimage/', $filename);
-                $dataConfirmPhotoProcess->penjualan_tiket()->create(['gambar_tiket' => $filename]);
+                $dataConfirmPhotoProcess->penjualan_tiket()->create(['gambar_penjualan' => $filename]);
             }
 
             $dataConfirmPhotoProcess->status = 4;

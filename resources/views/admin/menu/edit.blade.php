@@ -14,7 +14,7 @@
                                 <input type="text" name="jenis_tiket" class="form-control" placeholder="Nama Tiket" value="{{ $dataMenuUpdate->jenis_tiket }}">
                                 @error('jenis_tiket')
                                     <div class="text-danger">
-                                        {{ $message }}
+                                        Masukkan nama tiket 
                                     </div>
                                 @enderror
                             </div>
@@ -22,7 +22,7 @@
                                 <input type="number" name="harga" class="form-control" placeholder="Harga Tiket" value="{{ $dataMenuUpdate->harga }}">
                                 @error('harga')
                                     <div class="text-danger">
-                                        {{ $message }}
+                                        Masukkan harga tiket 
                                     </div>
                                 @enderror
                             </div>
@@ -31,7 +31,7 @@
                                     placeholder="Keterangan Produk" value="{{ $dataMenuUpdate->keterangan }}">
                                 @error('keterangan')
                                     <div class="text-danger">
-                                        {{ $message }}
+                                        Masukkan keterangan tiket 
                                     </div>
                                 @enderror
                             </div>
@@ -40,7 +40,7 @@
                                     placeholder="Stok" value="{{ $dataMenuUpdate->stok }}">
                                 @error('stok')
                                     <div class="text-danger">
-                                        {{ $message }}
+                                        Masukkan stok tiket 
                                     </div>
                                 @enderror
                             </div>
@@ -54,7 +54,7 @@
                                 @endif
                                 @error('gambar_tiket')
                                     <div class="text-danger">
-                                        {{ $message }}
+                                        Masukkan gambar tiket 
                                     </div>
                                 @enderror
                             </div>

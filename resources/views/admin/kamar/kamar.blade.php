@@ -6,6 +6,7 @@
             <label for="nama_kamar">Nama Kamar</label>
             <input placeholder="Masukkan Nama Kamar" type="text" class="form-control" id="nama_kamar" name="nama_kamar"
                 required>
+                
         </div>
 
         <div class="form-group">

@@ -62,9 +62,9 @@
                             <div class="card text-bold" style="box-shadow: inset 3px 3px 4px rgba(0,0,0,0.4); border: 1px solid grey;">
                                 <h6 class="card-body">Lihat Gambar :</h6>
                                 <div class="gallery">
-                                    @foreach ($gambar_tiket as $item)
-                                        <a href="productimage/{{ $item->gambar_tiket }}" data-sub-html="Demo Description">
-                                            <img class="img-responsive thumbnail" src="productimage/{{ $item->gambar_tiket }}" alt="" style="max-width: 200px; max-height: 200px;">
+                                    @foreach ($gambar_penjualan as $item)
+                                        <a href="productimage/{{ $item->gambar_penjualan }}" data-sub-html="Demo Description">
+                                            <img class="img-responsive thumbnail" src="productimage/{{ $item->gambar_penjualan }}" alt="" style="max-width: 200px; max-height: 200px;">
                                         </a>
                                     @endforeach
                                 </div>
