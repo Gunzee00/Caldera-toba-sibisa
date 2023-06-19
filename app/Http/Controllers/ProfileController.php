@@ -38,8 +38,8 @@ class ProfileController extends Controller
             }
             $user->name     = $request->name;
             $user->email    = $request->email;
-            $user->nohp     = $request->nohp;
-            $user->alamat   = $request->alamat;
+            // $user->nohp     = $request->nohp;
+            // $user->alamat   = $request->alamat;
             if(!empty($request->password))
             {
                 $user->password = Hash::make($request->password);
@@ -71,8 +71,8 @@ class ProfileController extends Controller
             $user = User::where('id', Auth::user()->id)->first();
             $user->name     = $request->name;
             $user->email    = $request->email;
-            $user->nohp     = $request->nohp;
-            $user->alamat   = $request->alamat;
+            // $user->nohp     = $request->nohp;
+            // $user->alamat   = $request->alamat;
             if(!empty($request->password))
             {
                 $user->password = Hash::make($request->password);
