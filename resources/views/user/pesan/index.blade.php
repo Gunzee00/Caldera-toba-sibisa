@@ -64,7 +64,7 @@
                                                 <input type="number" name="jumlah_pesan" class="form-control" required
                                                     min="1" value="{{ old('jumlah_pesan') }}">
                                                 <button type="submit" class="btn btn-primary mt-2"><i
-                                                        class="fas fa-shopping-cart"></i> add cart</button>
+                                                        class="fas fa-shopping-cart"></i> Tambahkan Ke keranjang </button>
 
                                             </td>
                                         </tr>

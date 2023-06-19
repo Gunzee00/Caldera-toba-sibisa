@@ -40,14 +40,14 @@
                         <td>{{ $item->tempat_tinggal }}</td>
                         <td>
                             <a href="/edit-datapengunjung/{{ $item->id_data }}"><button type="button"
-                                    class="btn col btn-warning">Edit</button></a>
+                                    class="btn col btn-warning">Ubah</button></a>
                         </td>
                         <td>
                             <form action="delete-datapengunjung/{{ $item->id_data }}" method="POST"
                                 id="deleteForm{{ $item->id_data }}">
                                 @csrf
                                 @method('delete')
-                                <input type="submit" class="btn col btn-danger btn-block btn-sm" value="Delete"
+                                <input type="submit" class="btn col btn-danger btn-block btn-sm" value="Hapus"
                                     onclick="return confirmDelete('{{ $item->id_data }}')">
                             </form>
                         </td>

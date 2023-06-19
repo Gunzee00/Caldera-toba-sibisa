@@ -15,7 +15,7 @@
                             <th class="text-center">No.</th>
                             <th class="text-center">Nama</th>
                             <th class="text-center">Email</th>
-                            <th class="text-center">Action</th>
+                            <th class="text-center">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>

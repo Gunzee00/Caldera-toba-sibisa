@@ -19,7 +19,7 @@
                                     {{-- <th>Tanggal</th>
                                     <th>Tanggal Penggunaan Tiket</th> --}}
                                     <th>Kirim Tiket</th>
-                                    <th>Action</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -61,7 +61,7 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <button type="submit" multiple="true" class="btn btn-primary" onclick="return confirmUpload()">Upload</button>
+                                                <button type="submit" multiple="true" class="btn btn-primary" onclick="return confirmUpload()">Unggah</button>
                                             </td>
                                         </tr>
                                     </form>

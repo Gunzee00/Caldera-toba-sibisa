@@ -4,16 +4,16 @@
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">Tabel Management User</h4>
-            <p class="card-description">Akun User Caldera Toba Sibisa</p>
-            <a href="{{ route('trash.user') }}" style="float: right"><button type="button" class="btn btn-danger btn-icon-tex" ><i class="ti-alert btn-icon-prepend"></i>Trashed</button></a>
+            <p class="card-description">Akun Pengunjung Caldera Toba Sibisa</p>
+            <a href="{{ route('trash.user') }}" style="float: right"><button type="button" class="btn btn-danger btn-icon-tex" ><i class="ti-alert btn-icon-prepend"></i>Riwayat</button></a>
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th class="">ID.</th>
+                            <th class="">No.</th>
                             <th class="">Nama</th>
                             <th class="">Email</th>
-                            <th class="">Action</th>
+                            <th class="">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -25,7 +25,7 @@
                             <td class=""><h6>{{ $data->email }}</h6></td>
                             <td class="">
                                 <a href="{{ url('/delete-role/'.$data->id) }}">
-                                    <button type="button" class="btn btn-success btn-icon-text" onclick="return confirmToggle('{{ $data->id }}')">Non-Aktifkan Akunc</button>
+                                    <button type="button" class="btn btn-success btn-icon-text" onclick="return confirmToggle('{{ $data->id }}')">Non-Aktifkan Akun</button>
                                   </a>
                             </td>
                         </tr>  

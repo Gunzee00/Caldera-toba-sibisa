@@ -3,10 +3,10 @@
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Tabel Admin</h4>
-            <p class="card-description">Admin Deba Store</p>
+            <h4 class="card-title">Tabel Administrator</h4>
+            <p class="card-description">Admin Caldera Toba Sibisa</p>
             <a href="{{ url('/add-admin') }}"><button type="button" class="btn btn-primary btn-icon-tex" ><i class="ti-alert btn-icon-prepend"></i>Tambah Admin</button></a>
-            <a href="{{ route('trash.user') }}" style="float: right"><button type="button" class="btn btn-warning btn-icon-tex" ><i class="ti-alert btn-icon-prepend"></i>Trashed</button></a>
+            <a href="{{ route('trash.user') }}" style="float: right"><button type="button" class="btn btn-warning btn-icon-tex" ><i class="ti-alert btn-icon-prepend"></i>Riwayat</button></a>
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
@@ -14,7 +14,7 @@
                             <th class="text-center">No.</th>
                             <th class="text-center">Nama</th>
                             <th class="text-center">Email</th>
-                            <th class="text-center">Action</th>
+                            <th class="text-center">Aksi    </th>
                         </tr>
                     </thead>
                     <tbody>

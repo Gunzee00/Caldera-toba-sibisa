@@ -48,15 +48,17 @@
                         <div class="row my-2">
                             <div class="col">
                                 <a href="/add-artikel/{{ $item->id_artikel }}/edit"
-                                    class="btn btn-primary btn-block btn-sm">Edit</a>
+                                    class="btn btn-primary btn-block btn-sm">Ubah</a>
                             </div>
                             <div class="col">
-                                <form action="delete-produk/{{ $item->id_artikel }}" method="POST" id="deleteForm{{ $item->id_artikel }}">
-                                  @csrf
-                                  @method('delete')
-                                  <input type="submit" class="btn btn-danger btn-block btn-sm" value="Delete" onclick="return confirmDelete('{{ $item->id_artikel }}')">
+                                <form action="delete-produk/{{ $item->id_artikel }}" method="POST"
+                                    id="deleteForm{{ $item->id_artikel }}">
+                                    @csrf
+                                    @method('delete')
+                                    <input type="submit" class="btn btn-danger btn-block btn-sm" value="Hapus"
+                                        onclick="return confirmDelete('{{ $item->id_artikel }}')">
                                 </form>
-                              </div>
+                            </div>
                         </div>
                     </div>
 
@@ -80,16 +82,16 @@
         }
     </script>
 
-<script>
-    function confirmDelete(id) {
-      var confirmation = confirm("Apakah Anda yakin ingin menghapus data ini?");
-    
-      if (confirmation) {
-        // Submit formulir penghapusan
-        document.getElementById('deleteForm' + id).submit();
-      }
-    
-      return false; // Menghentikan tindakan default klik tombol
-    }
+    <script>
+        function confirmDelete(id) {
+            var confirmation = confirm("Apakah Anda yakin ingin menghapus data ini?");
+
+            if (confirmation) {
+                // Submit formulir penghapusan
+                document.getElementById('deleteForm' + id).submit();
+            }
+
+            return false; // Menghentikan tindakan default klik tombol
+        }
     </script>
 @endsection
