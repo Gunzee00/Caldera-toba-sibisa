@@ -8,7 +8,7 @@
         </div>
         <div class="form-group">
             <label for="nik">Nik</label>
-            <input type="number" class="form-control" id="nik" name="nik" required>
+            <input type="number" class="form-control"  id="nik" name="nik" maxlength="16" required>
         </div>
         <div class="form-group">
             <label for="tempat_tinggal">Tempat Tinggal</label>

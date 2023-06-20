@@ -73,10 +73,10 @@ class GaleriController extends Controller
     {
         $galeri = galeri::find($id_galeri);
         return view('admin.galeri.detail-galeri', [
-            "title" => 'Update Galeri'
+            "title" => 'Ubah Galeri'
         ], ['galeri' => $galeri]);
         return view('admin.galeri.galeri', [
-            "title" => 'Update Galeri'
+            "title" => 'Ubah Galeri'
         ], ['galeri' => $galeri]);
     }
 
@@ -90,7 +90,7 @@ class GaleriController extends Controller
     {
         $galeri = galeri::find($id_galeri);
         return view('admin.galeri.edit-galeri', [
-            "title" => 'Update Gallery'
+            "title" => 'Ubah Galeri'
         ], ['galeri' => $galeri]);
     }
 

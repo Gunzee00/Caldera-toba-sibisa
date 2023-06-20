@@ -34,7 +34,7 @@ class ArtikelController extends Controller
     public function create()
     {
         return view('admin.artikel.add-artikel', [
-            "title" => 'Tambah Tiket'
+            "title" => 'Tambah Artikel'
         ]);
     }
 
@@ -123,10 +123,10 @@ class ArtikelController extends Controller
     {
         $artikel = Artikel::find($id_artikel);
         return view('admin.artikel.detail-artikel', [
-            "title" => 'Update Tiket'
+            "title" => 'Ubah Artikel'
         ], ['artikel' => $artikel]);
         return view('admin.artikel.artikel', [
-            "title" => 'Update Tiket'
+            "title" => 'Ubah Artikel'
         ], ['artikel' => $artikel]);
     }
 
@@ -135,7 +135,7 @@ class ArtikelController extends Controller
 
         $artikel = Artikel::find($id_artikel);
         return view('admin.artikel.edit-artikel', [
-            "title" => 'Update Gallery'
+            "title" => 'Ubah Artikel'
         ], ['artikel' => $artikel]);
     }
 
