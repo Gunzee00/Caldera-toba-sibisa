@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Pesanan;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class PesananDetail extends Model
 {
@@ -27,6 +28,6 @@ class PesananDetail extends Model
 
       public function pesanan()
       {
-            return $this->belongsTo('App\Models\Pesanan', 'pesanan_id', 'id');
+            return $this->belongsTo(Pesanan::class, 'pesanan_id', 'id');
       }
 }

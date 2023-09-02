@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Dompdf\Dompdf;
 use App\Models\User;
 use App\Models\PenjualanTiket;
@@ -21,15 +22,20 @@ class HistoryController extends Controller
 
 
     //print pdf
-    
+
 
     public function index()
     {
-        $pesanans = Pesanan::where('user_id', Auth::user()->id)->where('status', '!=', 0)->get()->sortByDesc('updated_at');
+        // $pesanans = Pesanan::where('user_id', Auth::user()->id)->where('status', '!=', 0)->get()->sortByDesc('updated_at');
+        $pesanans = Pesanan::where('user_id', Auth::user()->id)
+    ->where('status', '!=', 0)
+    ->orderByDesc('updated_at')
+    ->paginate(5);
         // $pesanans = DB::table('pesanans')->join('photos','pesanans.id','=','photos.pesanan_id')
         // ->select('pesanans.*','photos.gambar')
         // ->get();
-        $pesanans = Pesanan::paginate(5);  // 
+        // return $pesanans;
+        // $pesanans = Pesanan::paginate(5);  // 
         return view('user.history.index', [
             "title" => 'Pesanan'
         ], compact('pesanans'));
@@ -45,7 +51,7 @@ class HistoryController extends Controller
             "title" => 'Pesanan | Detail Pemesanan'
         ], compact('pesanan', 'pesanan_details', 'gambar_penjualan'));
     }
-    
+
     public function history()
     {
         $historyPesanan = DB::table('pesanans')->where('user_id', Auth::user()->id)

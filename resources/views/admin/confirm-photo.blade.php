@@ -13,11 +13,10 @@
                                 <tr>
                                     <th>No.</th>
                                     <th>Nama Pemesan</th>
-                                    <th>Detail</th>
+                                    <th>Tiket</th>
                                     <th>Kode</th>
                                     <th>Jumlah Harga</th>
-                                    {{-- <th>Tanggal</th>
-                                    <th>Tanggal Penggunaan Tiket</th> --}}
+                                    
                                     <th>Kirim Tiket</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -35,20 +34,20 @@
                                             {{-- <td> 
                                             {{ $data->barangs->jenis_tiket }}
                                         </td> --}}
-                                        <td>
-                                            <a href="{{ route('order.detail', ['id' => $data->id]) }}" class="nav-link">
-                                                <i class="fas fa-eye"></i>
-                                                {{-- order-details/24 --}}
-                                            </a>
-                                        </td>
-                                        
+                                            <td>
+                                                <a href="{{ route('order.detail', ['id' => $data->id]) }}" class="nav-link">
+                                                    <i class="fas fa-eye"></i>
+                                                    {{-- order-details/24 --}}
+                                                </a>
+                                            </td>
+
                                             <td>{{ $data->kode }}</td>
 
                                             <td>Rp{{ number_format($data->jumlah_harga, 0, ',', '.') }}</td>
                                             {{-- <td>{{ $data->updated_at->isoFormat('dddd, D MMM Y') }}</td>
                                             <td>{{ $data->tanggal_tiket }}</td> --}}
                                             <td>
-                                                <input multiple="true" type="file" accept="image/*" name="img[]" required>
+                                                <input multiple="true" type="file" name="img[]" required>
                                                 @error('img')
                                                     <div class="text-danger">
                                                         {{ $message }}
@@ -56,12 +55,13 @@
                                                 @enderror
                                                 @if (!old('img'))
                                                     <div class="text-info">
-                                                        
+
                                                     </div>
                                                 @endif
                                             </td>
                                             <td>
-                                                <button type="submit" multiple="true" class="btn btn-primary" onclick="return confirmUpload()">Unggah</button>
+                                                <button type="submit" multiple="true" class="btn btn-primary"
+                                                    onclick="return confirmUpload()">Unggah</button>
                                             </td>
                                         </tr>
                                     </form>
@@ -76,9 +76,9 @@
     </div>
     <script>
         function confirmUpload() {
-          var confirmation = confirm("Apakah Anda yakin ingin mengunggah file ini?");
-        
-          return confirmation;
+            var confirmation = confirm("Apakah Anda yakin ingin mengunggah file ini?");
+
+            return confirmation;
         }
-        </script>
+    </script>
 @endsection

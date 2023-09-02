@@ -17,17 +17,17 @@
         </div>
     </div> --}}
 
+ {{-- ganti landing page nya --}}
     <div id="page">
         <section id="gtco-hero" class="gtco-cover"
-            style="background-image: url(img/sampul.jpg); background-repeat:no-repeat; background-size:cover; height:40vh;"
-            data-section="home" data-stellar-background-ratio="0.5">
+            style="background-image: url(img/sampul.png); background-repeat:no-repeat; background-size:cover; height:100vh;"
+            data-section="home" data-stellar-background-ratio="">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 col-md-offset-0 text-center">
                         <div class="display-t">
                             <div class="display-tc">
-
                             </div>
                         </div>
                     </div>
@@ -40,14 +40,54 @@
         <section class="section" id="our-classes">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6 offset-lg-3">
-                        <div class="section-heading">
-                            <h2>Caldera Toba Sibisa </h2>
+                    <div class="col-lg-3 offset-lg-2">
+                        <div class="section">
+                            {{-- <h2>Caldera Toba Sibisa </h2> --}}
                             <img src="assets/images/line-dec.png" alt="">
-                            <p>Website Resmi Caldera Toba Sibisa</p>
+                            {{-- <p>Website Resmi Caldera Toba Sibisa</p> --}}
                         </div>
                     </div>
                 </div>
+                <section id="gtco-about" data-section="about">
+                    @foreach ($artikel as $item)
+                    <div class="mt-2" >
+                        <div class="row mb-1">
+                            <div class="col-md">
+                                <img src="{{ url('/image//' . $item->gambar) }}" width="100%;" class="img-responsive" alt="product">
+                            </div>
+                            <div class="col-md">
+                                <h2>{{ $item->judul_artikel }}</h2>
+                                <p class="card-text">{{ $item->tanggal_rilis }}</p>
+                                <p>{{ $item->deskripsi }}
+                                </p>
+                            </div>
+                        </div><br><br><br>
+                        @endforeach
+                        {{-- <div id="maksudtujuan" class="row team-item gtco-team-reverse">
+                            <div class="col-md-6  col-md-pull-6 animate-box" data-animate-effect="fadeInRight">
+                                <h2>Kunjungan Jokowi</h2>
+                                <p>Kunjungan wisatawan selama libur Idul Fitri 1443 H ke spot selfie
+                                    'Jokowi Point' yang terletak di lokasi wisata The Kaldera Toba Nomadic
+                                    Escape, Desa Sibisa, Kecamatan Ajibata, Kabupaten Toba Samosir, Sumatra
+                                    Utara mengalami peningkatan tajam. Lokasi spot selfie 'Jokowi Point' menjadi
+                                    primadona dan selalu mencuri perhatian para wisatawan yang berkunjung.
+                                    Karena sempat viral di mana Presiden Jokowi bersama Ibu Iriana pernah berfoto
+                                    selfie di lokasi tersebut dengan latar view Danau Toba saat Presiden meresmikannya
+                                    beberapa waktu yang lalu. "Kunjungan wisatawan khususnya di lokasi spot selfie
+                                    'Jokowi Point' Caldera Nomadic Escape sejak hari pertama libur Idul Fitri 1443 H
+                                    dari tanggal 2 Mei hingga puncaknya 8 Mei 2022, hari ini terus mengalami peningkatan
+                                    yang sangat tajam sekitar 30.342.</p>
+
+                            </div>
+                            <div class="col-md-6 col-md-push-7 animate-box" data-animate-effect="fadeInRight">
+                                <div class="img-shadow">
+                                    <img src="aboutimg/foto1.png" style="width: 100%;" class="img-responsive" alt="Photos"
+                                        class="img-responsive">
+                                </div>
+                            </div>
+                        </div> <br><br><br>
+
+                </section>
                 <section id="gtco-about" data-section="about">
                     <div class="mt-5" style="margin-left: 20px;margin-right:20px;">
                         <div class="row mb-1">
@@ -91,7 +131,7 @@
                                         class="img-responsive">
                                 </div>
                             </div>
-                        </div> <br><br><br>
+                        </div> <br><br><br> --}}
 
                 </section>
 

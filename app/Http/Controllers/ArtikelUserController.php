@@ -19,6 +19,12 @@ class ArtikelUserController extends Controller
         return view('user.artikel.artikel-user', compact('artikel'));
     }
 
+    public function indexhome()
+    {
+        $artikel = Artikel::latest()->take(3)->get();
+        return view('user.home', compact('artikel'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

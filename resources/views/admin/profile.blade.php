@@ -15,14 +15,14 @@
                             <th>Email</th>
                             <td>{{ $user->email }}</td>
                         </tr>
-                        <tr>
+                        {{-- <tr>
                             <th>No Hp</th>
                             <td>{{ $user->nohp }}</td>
                         </tr>
                         <tr>
                             <th>Alamat</th>
                             <td>{{ $user->alamat }}</td>
-                        </tr>
+                        </tr> --}}
                     </table>
                 </div>
             </div>

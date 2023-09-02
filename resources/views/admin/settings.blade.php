@@ -40,7 +40,7 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
+                            {{-- <div class="row mb-3">
                                 <label for="nphp" class="col-md-2 col-form-label text-md-end">No HP</label>
 
                                 <div class="col-md-6">
@@ -70,7 +70,7 @@
                                     @enderror
                                 </div>
                             </div>
-
+ --}}
 
                             <div class="row mb-3">
                                 <label for="password"

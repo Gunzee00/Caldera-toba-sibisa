@@ -68,15 +68,15 @@
                 <div class="dropdown-title">Hello {{ Auth::user()->name }}</div>
                 <a href="{{ route('profile.admin') }}" class="dropdown-item has-icon"> <i
                         class="far
-                                    fa-user"></i> Profile
+                                    fa-user"></i> Profil
                 </a>
                 <a href="{{ route('setting.admin') }}" class="dropdown-item has-icon"> <i class="fas fa-cog"></i>
-                    Settings
+                    Pengaturan Akun
                 </a>
                 <div class="dropdown-divider"></div>
                 <a href="{{ route('logout') }}" class="dropdown-item has-icon text-danger"> <i
                         class="fas fa-sign-out-alt"></i>
-                    Logout
+                    Keluar
                 </a>
             </div>
         </li>

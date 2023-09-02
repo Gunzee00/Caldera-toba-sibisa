@@ -8,14 +8,14 @@
     margin: 5px; /* Sesuaikan nilai margin yang diinginkan di sini */
   }
 </style>
-    <div class="container ">
+    <div class="container">
         <div class="row">
           <h3>Tiket</h3>
           <hr></hr>
           @foreach ($dataMenu as $tiket)
           <div class="card row-sm-4" style="border: 1px solid rgb(1, 1, 1); margin:5px; width:350px; height:auto;justify-content:center; align-items:center;">
               <div style="position:relative; width:300px; height:200px;">
-                  <img src="{{ url('productimage') }}/{{ $tiket->gambar_tiket }}" class="card-img-top" alt="{{ $tiket->gambar_tiket }}" style="position:absolute; width:100%; height:100%; object-fit:cover;"/>
+                  <img src="{{ url('productimage') }}/{{ $tiket->gambar_tiket }}" class="card-img-top" alt="{{ $tiket->gambar_tiket }}" style=" width:100%; height:100%; object-fit:scale-down;"/>
               </div>
               <div class="card-body">
                   <h5 class="card-title">{{ $tiket->jenis_tiket }}</h5>

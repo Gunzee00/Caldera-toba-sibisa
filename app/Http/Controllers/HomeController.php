@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Agen;
 use App\Models\User;
 use App\Models\Barang;
+use App\Models\Artikel;
 use App\Models\Pesanan;
 use App\Models\Contactus;
 use App\Models\Reservation;
@@ -28,6 +29,8 @@ class HomeController extends Controller
     public function index()
     {
         // $dataCustomers = User::all()->where('usertype', 0);
+        $artikel = Artikel::latest()->take(3)->get();
+
         $usertype = Auth::user()->usertype;
         if ($usertype == '1') {
             return view('admin.home', [
@@ -38,7 +41,7 @@ class HomeController extends Controller
                 "title" => "Dashboard"
             ]);
         } else {
-            return view('user.home');
+            return view('user.home',compact('artikel'));
         }
     }
 
@@ -348,4 +351,12 @@ class HomeController extends Controller
             "title" => 'Contact Us'
         ], compact('dataContact'));
     }
+    //artikel di home page
+
+    public function indexhome()
+    {
+        $artikel = Artikel::latest()->take(3)->get();
+        return view('user.home', compact('artikel'));
+    }
+    
 }

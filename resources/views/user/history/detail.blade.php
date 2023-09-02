@@ -60,13 +60,13 @@
                             @endif
                             @if($pesanan->status == 4)
                             <div class="card text-bold" style="box-shadow: inset 3px 3px 4px rgba(0,0,0,0.4); border: 1px solid grey;">
-                                <h6 class="card-body">Lihat Gambar :</h6>
+                                <h6 class="card-body">Lihat Gambar : @foreach ($gambar_penjualan as $item)
+                                    <a href="pdf/{{ $item->gambar_penjualan }}" data-sub-html="Demo Description">Tiket Kamu
+                                        {{-- <img class="img-responsive thumbnail" src="productimage/{{ $item->gambar_penjualan }}" alt="" style="max-width: 200px; max-height: 200px;"> --}}
+                                    </a>
+                                @endforeach</h6>
                                 <div class="gallery">
-                                    @foreach ($gambar_penjualan as $item)
-                                        <a href="productimage/{{ $item->gambar_penjualan }}" data-sub-html="Demo Description">
-                                            <img class="img-responsive thumbnail" src="productimage/{{ $item->gambar_penjualan }}" alt="" style="max-width: 200px; max-height: 200px;">
-                                        </a>
-                                    @endforeach
+                                    
                                 </div>
                             </div>                            
                             </div>
@@ -170,14 +170,14 @@
                                  </tr>
                              @endforeach
                                
-                                <tr>
-                                    <td colspan="6" class="text-end" colspan="5"><strong>Total Pesanan:</strong></td>
-                                    <td><strong>Rp. {{ number_format($pesanan->jumlah_harga) }}</strong></td>
-                                </tr>
-                                <tr>
+                                    {{-- <tr>
+                                        <td colspan="6" class="text-end" colspan="5"><strong>Total Pesanan:</strong></td>
+                                        <td><strong>Rp. {{ number_format($pesanan->jumlah_harga) }}</strong></td>
+                                    </tr> --}}
+                                {{-- <tr>
                                     <td colspan="6" class="text-end" colspan="5"><strong>Kode Pesanan :</strong></td>
                                     <td><strong>{{ $pesanan->kode }}</strong></td>
-                                </tr>
+                                </tr> --}}
                                 <tr>
                                     <td colspan="6" class="text-end" colspan="5"><strong>Total Pembayaran :</strong></td>
                                     <td><strong>Rp. {{ number_format($pesanan->jumlah_harga) }}</strong></td>

@@ -11,7 +11,7 @@
             @csrf
             <div class="card-body">
                 <div class="form-group">
-                    <label>Nama</label>
+                    <label>Nasma</label>
                     <input type="text" class="form-control" name="name" value={{ $editAdmin->name }}>
                     @error('name')
                         <div class="text-danger">

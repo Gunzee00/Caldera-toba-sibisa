@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+
+use Dompdf\Dompdf;
 use App\Models\User;
 use App\Models\Tiket;
 use App\Models\Pesanan;
+use PDF;
 use Illuminate\Http\Request;
 use App\Models\PesananDetail;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -109,9 +113,15 @@ class PesanController extends Controller
         $pesanan = Pesanan::find($id);
         $pesanan_details = PesananDetail::where('pesanan_id', $pesanan->id)->get();
 
-        return view('admin.orders-detail', [
-            "title" => 'Pesanan | Detail Pemesanan',
-        ], compact('pesanan', 'pesanan_details'));
+        // return view('admin.orders-detail', [
+        //     "title" => 'Pesanan | Detail Pemesanan',
+        // ], compact('pesanan', 'pesanan_details'));
+        // $pesanan_details = PesananDetail::find($id);
+        $pdf = PDF::loadView('admin.orders-detail', ['pesanan_details' => $pesanan_details]);
+
+        // $pdf = PDF::loadView('pdf.invoice', $pesanan_details);
+
+        return $pdf->download('tiket.pdf');
     }
 
 
@@ -182,6 +192,40 @@ class PesanController extends Controller
         ], compact('dataOrders'));
     }
 
+    //download pdf
+
+    public function downloadPDF($id)
+    {
+        // $pesanan = Pesanan::find($id);
+        // $pesanan_details = PesananDetail::where('pesanan_id', $pesanan->id)->get();
+
+        // return $pesanan_details;
+
+        // $pdf = new Dompdf();
+        // $html = view('pdf.invoice', [
+        //     "title" => 'Pesanan | Detail Pemesanan',
+        // ], compact('pesanan', 'pesanan_details'))->render();
+
+        // $pdf->loadHtml($html);
+        // $pdf->setPaper('A4', 'portrait');
+        // $pdf->render();
+        // return $pdf->stream();
+
+        // $pdf = PDF::loadview('pdf.invoice', ['pegawai' => $pegawai]);
+        // return $pdf->download('laporan-pegawai-pdf');
+        // $pesanan_details = PesananDetail::where('pesanan_id', $id)->first();
+        // $pdf = PDF::loadView('pdf.invoice', ['pesanan_details' => $pesanan_details]);
+        // return $pdf->download('pdf.invoice');
+
+        $pesanan_details = PesananDetail::find($id);
+        $pdf = PDF::loadView('pdf.invoice', ['pesanan_details' => $pesanan_details]);
+
+        // $pdf = PDF::loadView('pdf.invoice', $pesanan_details);
+
+        return $pdf->download('test.pdf');
+    }
+
+
     public function confirmOrdersProcess($id)
     {
         $dataConfirmProcess = Pesanan::where('id', $id)->first();
@@ -237,7 +281,8 @@ class PesanController extends Controller
     public function confirmPhotoProcess(Request $request, $id)
     {
         $request->validate([
-            'img.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'img' => 'required'
+            // 'pdf.*' => 'required|pdf|mimes:pdf|max:3048'
         ]);
 
         $dataConfirmPhotoProcess = Pesanan::where('id', $id)->first();
@@ -246,7 +291,7 @@ class PesanController extends Controller
             $images = $request->file('img');
             foreach ($images as $image) {
                 $filename = $image->getClientOriginalName();
-                $image->move('productimage/', $filename);
+                $image->move('pdf/', $filename);
                 $dataConfirmPhotoProcess->penjualan_tiket()->create(['gambar_penjualan' => $filename]);
             }
 
@@ -256,7 +301,7 @@ class PesanController extends Controller
 
         return redirect()->route('confirm.photo')->with('toast_success', 'Tiket berhasil di kirimkan');
     }
-
+}
 
     // public function tracking()
     // {
@@ -301,4 +346,3 @@ class PesanController extends Controller
 
     //     return redirect()->route('order.tracking')->with('toast_success', 'Data berhasil tersimpan');
     // }
-}

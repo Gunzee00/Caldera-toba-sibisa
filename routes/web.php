@@ -1,5 +1,4 @@
 <?php
-
 use App\Models\Barang;
 use App\Models\AboutUs;
 use Illuminate\Support\Facades\Auth;
@@ -35,19 +34,21 @@ use App\Http\Controllers\DetailMenuController;
 |
 */
 
-Route::get('/', function () {
-    return view('user.home');
-});
+// Route::get('/', function () {
+//     return view('user.home');
+// });
 
 //mesan barang
 
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\ArtikelUserController::class, 'indexhome'])->name('artikel');
 
 Auth::routes();
 
+Route::get('/list-menu', [MenuController::class, 'menuUser'])->name('product.menu');
 
 
 Route::get('/list-menu', [MenuController::class, 'menuUser'])->name('product.menu');
@@ -223,6 +224,10 @@ Route::get('/user-detail-artikel/{id_artikel}', [ArtikelUserController::class, '
 
 //penjualan tiket
 Route::get('/penjualan-tiket', [PenjualanTiketController::class, 'indexpenjualan'])->name('penjualan.tiket');
+
+//print pdf
+Route::get('/download-pdf/{id}', [PesanController::class, 'downloadPDF'])->name('invoice');
+// Route::get('/view-transaction/{id}', 'App\Http\Controllers\TransactionController@viewTransaksi');
 
 
 

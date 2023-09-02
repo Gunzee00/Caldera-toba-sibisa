@@ -1,38 +1,41 @@
-@extends('admin.layouts.master')
-@section('content')
-    <div class="col-md-12">
-        <div class="card mt-2">
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-hover">
-                        <tr>
-                            <th>No</th>
-                            <th>Gambar Tiket</th>
-                            <th>Nama tiket</th>
-                            <th>Jumlah</th>
-                            <th>Harga</th>
-                            <th>Tanggal Tiket</th>
-                            <th style="width: 120px">Total Harga</th>
+{{-- @extends('admin.layouts.master')
+@section('content') --}}
+<div class="col-md-12">
+    <div class="card mt-2">
+        <div class="card-body">
+            <div class="table-responsive">
 
-                        </tr>
-                        <?php
-                        $no = 1;
-                        ?>
-                        @foreach ($pesanan_details as $pesanan_detail)
-                            <tr>
-                                <td>{{ $no++ }}</td>
-                                <td>
-                                    <img src="{{ url('productimage') }}/{{ $pesanan_detail->tiket->gambar_tiket }}"
-                                        style="width: 100px; height:100px;" class="card-img-top" alt="product image" />
-                                </td>
-                                <td>{{ $pesanan_detail->tiket->jenis_tiket }}</td>
-                                <td>{{ $pesanan_detail->jumlah }} buah</td>
-                                <td>Rp. {{ number_format($pesanan_detail->tiket->harga) }}</td>
-                                <td>{{ $pesanan_detail->pesanan->tanggal_tiket }}</td>
-                                <td>Rp. {{ number_format($pesanan_detail->jumlah_harga) }}</td>
-                            </tr>
-                        @endforeach
-                    </table>
-                </div>
+
+                </tr>
+
+
+
+                @foreach ($pesanan_details as $pesanan_detail)
+                    {{-- <a href="{{ url('/download-pdf/' . $pesanan_detail->id) }}" class="btn btn-primary">Download PDF</a><br> --}}
+
+                    <strong>
+                        <h>Kode Pesanan: {{ $pesanan_detail->pesanan->kode }} <h>
+                    </strong>
+                    <center>
+                        <h>Tiket Masuk </h><br>
+                        <h>The Kaldera Nomademic Escape</h><br>
+
+                        <strong>
+                            <h>{{ $pesanan_detail->tiket->jenis_tiket }}</h><br>
+                        </strong>
+                        <h>Dapat digunakan <strong>{{ $pesanan_detail->jumlah }} orang</h></strong><br>
+
+                        {{-- <h4>Berlaku untuk satu orang satu kali masuk</h4> --}}
+                        <h>pada tanggal: <strong> {{ $pesanan_detail->pesanan->tanggal_tiket }}</h></strong><br>
+
+                        <h>Peraturan Direktur Utama</h><br>
+                        <h>Badan Pelaksanaan Otorita Danau Toba Nomor 1 Tahun 2021</h><br>
+                        <h>Tentang</h><br>
+                        <h>Pengenaan Tarif Layanan Badan Layanan Umum </h><br>
+                        <h>Badan Pelaksanaan Otorita Danau Toba </h><br>
+                    </center>
+                @endforeach
+                </table>
             </div>
-        @endsection
+        </div>
+        {{-- @endsection --}}

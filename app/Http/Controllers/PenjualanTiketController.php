@@ -11,9 +11,10 @@ class PenjualanTiketController extends Controller
 {
     public function indexpenjualan()
     {
-        $pesanan_details = Pesanan::where('user_id', Auth::user()->id)->where('status', '!=', 0)->get()->sortByDesc('updated_at');
-        $pesanan_details = Pesanan::all();
-        $pesanan_details = Pesanan::paginate(10); // Menampilkan 10 data per halaman
+        $pesanan_details = Pesanan::where('status', '!=', 0)->get()->sortByDesc('updated_at');
+        // $pesanans = Pesanan::all();
+        $pesanan_details = Pesanan::paginate(5); // Menampilkan 10 data per halaman
+        // return $pesanan_details;
         return view('admin.penjualan_tiket.indexpenjualan', [
             "title" => 'Pesanan | Detail Pemesanan',
         ], compact('pesanan_details'));
